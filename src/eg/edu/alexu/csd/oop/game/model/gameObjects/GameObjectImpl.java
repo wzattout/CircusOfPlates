@@ -2,16 +2,35 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
 
 abstract class GameObjectImpl implements GameObject {
 
     private int x;
     private int y;
-    private int width;
-    private int height;
-    private boolean visible;
+    protected int width;
+    protected int height;
+    protected boolean visible;
     private BufferedImage[] spriteImages;
+
+    public GameObjectImpl(int x, int y, String[] paths) {
+        this.x = x;
+        this.y = y;
+        ArrayList<BufferedImage> spriteImages = new ArrayList<>();
+        for(String path : paths){
+            try {
+                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(path));
+                spriteImages.add(image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+       this.spriteImages = spriteImages.toArray(new BufferedImage[0]);
+    }
 
     @Override
     public int getX() {

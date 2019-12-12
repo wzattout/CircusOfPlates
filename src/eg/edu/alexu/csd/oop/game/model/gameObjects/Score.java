@@ -5,8 +5,7 @@ public class Score implements Subject{
     
 	private ArrayList<Observer> observers= null;
 	
-	@Override
-	public void regestir_observer(Observer e) {
+	public void register_observer(Observer e) {
 		observers.add(e);
 	}
 
@@ -16,7 +15,7 @@ public class Score implements Subject{
 	}
 
 	@Override
-	public void notiffy_obserevers() {
+	public void notify_observers() {
 		for(Observer e : observers) {
 			e.update();
 		}

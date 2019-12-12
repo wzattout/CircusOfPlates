@@ -7,14 +7,22 @@ import java.util.List;
 
 abstract class Level implements World {
 
-    private List<GameObject> constantObjects;
-    private List<GameObject> movableObjects;
-    private List<GameObject> controllableObjects;
+    protected List<GameObject> constantObjects;
+    protected List<GameObject> movableObjects;
+    protected List<GameObject> controllableObjects;
     private int width;
     private int height;
     private String status;
     private int speed;
     private int controlSpeed;
+
+    public Level(int width, int height, String status, int speed, int controlSpeed) {
+        this.width = width;
+        this.height = height;
+        this.status = status;
+        this.speed = speed;
+        this.controlSpeed = controlSpeed;
+    }
 
     @Override
     public List<GameObject> getConstantObjects() {
@@ -42,9 +50,7 @@ abstract class Level implements World {
     }
 
     @Override
-    public boolean refresh() {
-        return false;
-    }
+    public abstract boolean refresh();
 
     @Override
     public String getStatus() {
