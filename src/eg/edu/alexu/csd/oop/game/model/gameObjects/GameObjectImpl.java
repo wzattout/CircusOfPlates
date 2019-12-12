@@ -1,5 +1,7 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects;
 
+import eg.edu.alexu.csd.oop.game.GameObject;
+
 import java.awt.image.BufferedImage;
 
 abstract class GameObjectImpl implements GameObject {

@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.game.model.worlds;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObject;
+import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.World;
 
 import java.util.List;
 
