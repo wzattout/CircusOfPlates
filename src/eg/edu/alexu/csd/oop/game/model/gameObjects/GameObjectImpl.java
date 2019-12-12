@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
