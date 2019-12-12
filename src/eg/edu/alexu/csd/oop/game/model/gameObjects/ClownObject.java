@@ -11,5 +11,4 @@ public class ClownObject extends GameObjectImpl {
 
     @Override
     public void setY(int y) {}
-
 }

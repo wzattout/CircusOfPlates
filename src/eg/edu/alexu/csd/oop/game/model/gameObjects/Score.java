@@ -1,24 +1,25 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects;
-import java.util.ArrayList;
 
-public class Score implements Subject{
-    
-	private ArrayList<Observer> observers= null;
+public class Score implements Observer{
+
+	private int current_score = 0;
+	private PlateStack scoreNotifier = new PlateStack(0,0, new String[]{});
+	private Score(){
+		scoreNotifier.register_observer(this);
+	}
+	private static Score score = null;
+
+	public static Score getInstance(){
+		if(score != null)
+			return score;
+		return new Score();
+	}
+
+	public void update() {
+		current_score++;
+	}
 	
-	public void register_observer(Observer e) {
-		observers.add(e);
+	public int getScore(){
+		return current_score;
 	}
-
-	@Override
-	public void remove_observer(Observer e) {
-		observers.remove(e);
-	}
-
-	@Override
-	public void notify_observers() {
-		for(Observer e : observers) {
-			e.update();
-		}
-	}
-
 }

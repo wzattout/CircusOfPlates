@@ -57,6 +57,10 @@ abstract class Level implements World {
         return status;
     }
 
+    protected void setStatus(String status){
+        this.status = status;
+    }
+
     @Override
     public int getSpeed() {
         return speed;
