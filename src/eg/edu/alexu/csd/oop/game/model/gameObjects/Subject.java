@@ -2,7 +2,7 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects;
 
 public interface Subject{
 
-    ArrayList<Obserever> observers = new ArrayList<Observer>(0); 
+    ArrayList<Obserever> observers; 
     
     public void regestir_observer();
     public void remove_observer();
