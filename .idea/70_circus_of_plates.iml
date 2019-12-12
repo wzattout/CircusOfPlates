@@ -5,8 +5,7 @@
     <output-test url="file:///test/70_circus_of_plates" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/eg.edu.alexu.csd.oop.game/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/eg/edu/alexu/csd/oop/game/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,6 +1,7 @@
-package model.worlds;
+package eg.edu.alexu.csd.oop.game.model.worlds;
 
-import model.gameObjects.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObject;
+
 
 public interface World {
 
