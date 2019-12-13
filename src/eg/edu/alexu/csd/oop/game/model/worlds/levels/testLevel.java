@@ -1,13 +1,22 @@
-package eg.edu.alexu.csd.oop.game.model.worlds;
+package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.*;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.Background;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.ClownObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.Stick;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.Mode;
 
 import java.util.ArrayList;
 
 public class testLevel extends Level {
 
-    public testLevel() {
-        super(1400, 700, "Score: " + Score.getInstance().getScore(), 10, 9);
+    private Mode mode;
+
+    public testLevel(Mode mode) {
+        super(1400, 700, 10, 9);
+        this.mode = mode;
+        this.setStatus(mode.getStatus());
         this.constantObjects = new ArrayList<>();
         this.constantObjects.add(new Background(0,0));
         this.constantObjects.add(new ConveyorBelt(-30,100, "/conveyor.png"));
@@ -21,7 +30,6 @@ public class testLevel extends Level {
 
     @Override
     public boolean refresh() {
-        setStatus("Score: " + Score.getInstance().getScore());
-        return true;
+        return mode.refresh();
     }
 }

@@ -1,7 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects;
+
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class PlateStack extends GameObjectImpl implements Subject {
     
@@ -9,6 +8,10 @@ public class PlateStack extends GameObjectImpl implements Subject {
 
 	public PlateStack(int x, int y, String[] paths) {
 		super(x, y, paths);
+	}
+
+	public PlateStack(){
+		this(0, 0, new String[]{});
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-abstract class GameObjectImpl implements GameObject {
+abstract public class GameObjectImpl implements GameObject {
 
     private int x;
     private int y;

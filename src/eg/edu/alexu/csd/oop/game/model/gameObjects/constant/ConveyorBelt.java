@@ -1,4 +1,6 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects;
+package eg.edu.alexu.csd.oop.game.model.gameObjects.constant;
+
+import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
 
 public class ConveyorBelt extends GameObjectImpl {
 

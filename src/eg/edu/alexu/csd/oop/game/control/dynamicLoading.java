@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects;
+package eg.edu.alexu.csd.oop.game.control;
 
 import javax.swing.*;
 import java.io.File;

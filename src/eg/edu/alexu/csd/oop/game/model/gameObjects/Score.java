@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects;
 public class Score implements Observer{
 
 	private int current_score = 0;
-	private PlateStack scoreNotifier = new PlateStack(0,0, new String[]{});
+	private PlateStack scoreNotifier = new PlateStack();
 	private Score(){
 		scoreNotifier.register_observer(this);
 	}

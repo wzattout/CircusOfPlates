@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.worlds;
+package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
@@ -16,10 +16,9 @@ abstract class Level implements World {
     private int speed;
     private int controlSpeed;
 
-    public Level(int width, int height, String status, int speed, int controlSpeed) {
+    public Level(int width, int height, int speed, int controlSpeed) {
         this.width = width;
         this.height = height;
-        this.status = status;
         this.speed = speed;
         this.controlSpeed = controlSpeed;
     }

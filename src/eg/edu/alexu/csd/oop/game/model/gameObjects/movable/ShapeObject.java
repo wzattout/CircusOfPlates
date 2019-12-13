@@ -1,4 +1,6 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects;
+package eg.edu.alexu.csd.oop.game.model.gameObjects.movable;
+
+import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
 
 public class ShapeObject extends GameObjectImpl {
 
