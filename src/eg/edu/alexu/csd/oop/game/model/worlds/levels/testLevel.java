@@ -1,10 +1,7 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.*;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.Background;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.ClownObject;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.Stick;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.Mode;
 
 import java.util.ArrayList;
@@ -30,6 +27,7 @@ public class testLevel extends Level {
 
     @Override
     public boolean refresh() {
+        this.setStatus(mode.getStatus());
         return mode.refresh();
     }
 }

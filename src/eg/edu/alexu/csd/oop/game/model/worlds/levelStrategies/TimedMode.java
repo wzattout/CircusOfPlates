@@ -1,14 +1,16 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.Score;
+import eg.edu.alexu.csd.oop.game.model.utils.Score;
 
 public class TimedMode implements Mode {
 
-    int timeLeft = 0;
+    private long timeLeft;
+    private long startTime = System.currentTimeMillis();
 
     @Override
     public boolean refresh() {
-        return true;
+        timeLeft = 60000 - (System.currentTimeMillis() - startTime);
+        return timeLeft > 0;
     }
 
     @Override
