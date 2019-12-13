@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects;
+package eg.edu.alexu.csd.oop.game.model.utils;
 
 public interface Observer {
 
