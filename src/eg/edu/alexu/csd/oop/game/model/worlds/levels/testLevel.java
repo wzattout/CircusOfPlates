@@ -3,7 +3,6 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.Mode;
-
 import java.util.ArrayList;
 
 public class testLevel extends Level {
@@ -19,9 +18,10 @@ public class testLevel extends Level {
         this.constantObjects.add(new ConveyorBelt(-30,100, "/conveyor.png"));
         this.constantObjects.add(new ConveyorBelt(1400-470+30,100, "/conveyor.png"));
         this.controllableObjects = new ArrayList<>();
-        this.controllableObjects.add(new ClownObject(700-150/2,700-225));
-        this.controllableObjects.add(new Stick(740,452, "/right_stick.png"));
-        this.controllableObjects.add(new Stick(585,435, "/left_stick.png"));
+        ClownObject clown = new ClownObject(625,475);
+        this.controllableObjects.add(clown);
+        this.controllableObjects.add(new RightStick(740,452, clown));
+        this.controllableObjects.add(new LeftStick(585,435, clown));
         this.movableObjects = new ArrayList<>();
     }
 

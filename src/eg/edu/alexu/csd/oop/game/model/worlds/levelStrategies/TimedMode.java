@@ -10,6 +10,8 @@ public class TimedMode implements Mode {
     @Override
     public boolean refresh() {
         timeLeft = 60000 - (System.currentTimeMillis() - startTime);
+        // Should be called every time a plate is added to the stack but leave it here for now.
+        Score.getInstance().getScoreNotifier().checkStack("let this be empty for now");
         return timeLeft > 0;
     }
 
