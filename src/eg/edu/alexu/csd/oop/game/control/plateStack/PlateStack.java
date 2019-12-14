@@ -43,6 +43,5 @@ public class PlateStack implements Subject {
 	public void checkStack(String color){
 		if(stateStack.peek().changeState(color, this))
 			notify_observers();
-		System.out.println(stateStack);
 	}
 }
