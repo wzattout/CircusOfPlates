@@ -1,6 +1,5 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.MusicGame;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.Mode;
@@ -24,8 +23,6 @@ public class testLevel extends Level {
         this.controllableObjects.add(new RightStick(740,452, clown));
         this.controllableObjects.add(new LeftStick(585,435, clown));
         this.movableObjects = new ArrayList<>();
-        MusicGame music = new MusicGame("/circus_sound.wav");
-        music.playMusic();
     }
 
     @Override
