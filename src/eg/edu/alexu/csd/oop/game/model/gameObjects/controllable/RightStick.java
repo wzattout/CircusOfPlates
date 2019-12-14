@@ -15,6 +15,7 @@ public class RightStick extends GameObjectImpl {
     @Override
     public void setY(int y) {}
 
+    @Override
     public void setX(int x){
         this.x = clown.getX() + 115;
     }
