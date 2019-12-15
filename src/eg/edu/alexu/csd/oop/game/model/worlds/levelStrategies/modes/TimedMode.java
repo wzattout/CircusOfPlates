@@ -17,6 +17,6 @@ public class TimedMode implements Mode {
 
     @Override
     public String getStatus() {
-        return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft);
+        return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft)/1000;
     }
 }
