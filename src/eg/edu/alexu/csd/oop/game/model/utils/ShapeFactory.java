@@ -1,6 +1,9 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.*;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape1;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape2;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape3;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
 public class ShapeFactory {
 

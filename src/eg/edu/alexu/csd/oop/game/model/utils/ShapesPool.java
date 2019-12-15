@@ -1,6 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.ShapeObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 import java.util.Enumeration;
 import java.util.Hashtable;
 

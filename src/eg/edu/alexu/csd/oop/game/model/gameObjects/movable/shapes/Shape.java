@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects.movable;
+package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
 public interface Shape {
 
