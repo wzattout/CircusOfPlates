@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 
 public class dynamicLoading {
+
     public Class dynamicLoad() {
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);

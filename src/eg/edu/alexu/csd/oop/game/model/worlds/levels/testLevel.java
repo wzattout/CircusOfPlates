@@ -2,16 +2,19 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 import java.util.ArrayList;
 
 public class testLevel extends Level {
 
     private Mode mode;
+    private Difficulty difficulty;
 
-    public testLevel(Mode mode) {
-        super(1400, 700, 10, 9);
+    public testLevel(Mode mode, Difficulty difficulty) {
+        super(1400, 700, difficulty.getSpeed(), difficulty.getControlSpeed());
         this.mode = mode;
+        this.difficulty = difficulty;
         this.setStatus(mode.getStatus());
         this.constantObjects = new ArrayList<>();
         this.constantObjects.add(new Background(0,0));
