@@ -2,7 +2,7 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
-import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.Mode;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 import java.util.ArrayList;
 
 public class testLevel extends Level {

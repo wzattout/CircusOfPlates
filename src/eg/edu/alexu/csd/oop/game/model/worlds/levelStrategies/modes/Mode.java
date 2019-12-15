@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies;
+package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
 public interface Mode {
 

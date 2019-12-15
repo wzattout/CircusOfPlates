@@ -1,7 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.ShapeObject;
-
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -9,7 +8,6 @@ public class ShapesPool {
 
     private static Hashtable<Integer,ShapeObject> used_shapes = new Hashtable<Integer,ShapeObject>();
     private static Hashtable<Integer,ShapeObject> unused_shapes = new Hashtable<Integer,ShapeObject>();
-
 
     public ShapesPool(){
         ShapeFactory createshape = new ShapeFactory();
@@ -24,7 +22,6 @@ public class ShapesPool {
         }
     }
 
-
     public ShapeObject get_shape(){
         Enumeration<Integer> e = used_shapes.keys();
         while (e.hasMoreElements()){
@@ -33,22 +30,6 @@ public class ShapesPool {
                used_shapes.remove(temp);
             }
         }
-
-
-
-
         return null;
-
     }
-
-
-
-
-
-
-
-
-
-
-
 }

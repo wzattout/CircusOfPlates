@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies;
+package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
 import eg.edu.alexu.csd.oop.game.model.utils.Score;
 
@@ -17,6 +17,6 @@ public class TimedMode implements Mode {
 
     @Override
     public String getStatus() {
-        return "Score: " + Score.getInstance().getScore() + " Time Left: " + timeLeft;
+        return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft);
     }
 }

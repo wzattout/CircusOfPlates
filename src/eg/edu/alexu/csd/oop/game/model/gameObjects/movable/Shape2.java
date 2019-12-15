@@ -1,8 +1,13 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.movable;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
+public class Shape2 extends ShapeObject implements Shape {
 
-public class Shape2 extends GameObjectImpl implements Shape {
+    public Shape2(boolean right){
+        super(right?0:1, 0, new String[] {"shape2path"});
+        this.visible = true;
+        this.height = getSpriteImages()[0].getWidth();
+        this.width = getSpriteImages()[0].getHeight();
+    }
 
     @Override
     public void move(int x , int y , boolean falling , boolean right) {
@@ -16,17 +21,5 @@ public class Shape2 extends GameObjectImpl implements Shape {
         }
         x++;
     }
-
-    public Shape2(boolean right){
-        super(right?0:1, 0, new String[] {"shape2path"});
-        this.visible = true;
-        this.height = getSpriteImages()[0].getWidth();
-        this.width = getSpriteImages()[0].getHeight();
-    }
-
-
-
-
-
 
 }

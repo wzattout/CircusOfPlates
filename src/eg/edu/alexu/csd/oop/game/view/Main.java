@@ -1,7 +1,7 @@
 package eg.edu.alexu.csd.oop.game.view;
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
-import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.TimedMode;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.TimedMode;
 import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 
 public class Main {
