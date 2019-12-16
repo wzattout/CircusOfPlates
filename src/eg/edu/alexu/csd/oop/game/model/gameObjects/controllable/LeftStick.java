@@ -13,10 +13,11 @@ public class LeftStick extends GameObjectImpl {
     }
 
     @Override
-    public void setY(int y) {}
+    public void setY(int y) {
+    }
 
     @Override
-    public void setX(int x){
+    public void setX(int x) {
         this.x = clown.getX() - 40;
     }
 }

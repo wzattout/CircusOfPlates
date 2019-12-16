@@ -5,11 +5,16 @@ import eg.edu.alexu.csd.oop.game.model.utils.Score;
 public class TimedMode implements Mode {
 
     private long timeLeft;
+    private int gameTime;
     private long startTime = System.currentTimeMillis();
+
+    public TimedMode(int gameTime) {
+        this.gameTime = gameTime;
+    }
 
     @Override
     public boolean refresh() {
-        timeLeft = 60000 - (System.currentTimeMillis() - startTime);
+        timeLeft = gameTime - (System.currentTimeMillis() - startTime);
         // Should be called every time a plate is added to the stack but leave it here for now.
         Score.getInstance().getScoreNotifier().checkStack("let this be empty for now");
         return timeLeft > 0;
@@ -17,6 +22,6 @@ public class TimedMode implements Mode {
 
     @Override
     public String getStatus() {
-        return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft)/1000;
+        return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft) / 1000;
     }
 }

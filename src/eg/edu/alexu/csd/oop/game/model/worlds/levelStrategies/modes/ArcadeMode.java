@@ -16,6 +16,6 @@ public class ArcadeMode implements Mode {
 
     @Override
     public String getStatus() {
-        return "Score: " + Score.getInstance().getScore() + " Time Elapsed: " + timeElapsed/1000 + " Remaining Lives: " + remainingLives;
+        return "Score: " + Score.getInstance().getScore() + " Time Elapsed: " + timeElapsed / 1000 + " Remaining Lives: " + remainingLives;
     }
 }

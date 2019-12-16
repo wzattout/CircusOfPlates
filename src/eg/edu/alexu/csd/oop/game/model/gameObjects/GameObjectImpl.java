@@ -21,7 +21,7 @@ abstract public class GameObjectImpl implements GameObject {
         this.x = x;
         this.y = y;
         ArrayList<BufferedImage> spriteImages = new ArrayList<>();
-        for(String path : paths){
+        for (String path : paths) {
             try {
                 BufferedImage image = ImageIO.read(getClass().getResourceAsStream(path));
                 spriteImages.add(image);
@@ -29,7 +29,7 @@ abstract public class GameObjectImpl implements GameObject {
                 e.printStackTrace();
             }
         }
-       this.spriteImages = spriteImages.toArray(new BufferedImage[0]);
+        this.spriteImages = spriteImages.toArray(new BufferedImage[0]);
     }
 
     @Override

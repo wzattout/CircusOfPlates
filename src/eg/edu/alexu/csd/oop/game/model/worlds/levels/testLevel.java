@@ -1,10 +1,10 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
-import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
-import eg.edu.alexu.csd.oop.game.model.utils.SnapShot;
+import eg.edu.alexu.csd.oop.game.control.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -13,38 +13,34 @@ public class testLevel extends Level {
     private Mode mode;
     private Difficulty difficulty;
     private static Stack<SnapShot> states = new Stack<>();
+
     public testLevel(Mode mode, Difficulty difficulty) {
         super(1400, 700, difficulty.getSpeed(), difficulty.getControlSpeed());
         this.mode = mode;
         this.difficulty = difficulty;
         this.setStatus(mode.getStatus());
-        this.constantObjects = new ArrayList<>();
-        this.constantObjects.add(new Background(0,0));
-        this.constantObjects.add(new ConveyorBelt(-30,100, "/conveyor.png"));
-        this.constantObjects.add(new ConveyorBelt(1400-470+30,100, "/conveyor.png"));
+        this.constantObjects = difficulty.getConstantObjects();
         this.controllableObjects = new ArrayList<>();
-        ClownObject clown = new ClownObject(625,475);
+        ClownObject clown = new ClownObject(625, 475);
         this.controllableObjects.add(clown);
-        this.controllableObjects.add(new RightStick(740,452, clown));
-        this.controllableObjects.add(new LeftStick(585,435, clown));
+        this.controllableObjects.add(new RightStick(740, 452, clown));
+        this.controllableObjects.add(new LeftStick(585, 435, clown));
         this.movableObjects = new ArrayList<>();
     }
 
-
-    public void createSnapShot(){
+    public void createSnapShot() {
         SnapShot state = new SnapShot(mode);
         states.push(state);
     }
 
     //if u want undo u can't redo again :)
-    public void undo(SnapShot m){
+    public void undo(SnapShot m) {
         this.mode = m.getState();
         states.pop();
     }
 
-
-    public void replay(){
-        for(SnapShot i : states){
+    public void replay() {
+        for (SnapShot i : states) {
             this.mode = i.getState();
             this.setStatus(mode.getStatus());
             mode.refresh();

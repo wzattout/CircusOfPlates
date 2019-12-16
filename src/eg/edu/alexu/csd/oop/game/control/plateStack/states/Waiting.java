@@ -20,7 +20,7 @@ public class Waiting implements PlateStackState {
     @Override
     public boolean changeState(String color, PlateStack stack) {
         Stack<PlateStackState> temp = stack.getStateStack();
-        if(color.equals(this.color))
+        if (color.equals(this.color))
             temp.push(new OneToGo(color));
         else
             temp.push(new Waiting(color));

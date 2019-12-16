@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
+
 import java.util.List;
 
 abstract class Level implements World {
@@ -55,7 +56,7 @@ abstract class Level implements World {
         return status;
     }
 
-    protected void setStatus(String status){
+    protected void setStatus(String status) {
         this.status = status;
     }
 

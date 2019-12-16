@@ -9,5 +9,6 @@ public class PowerUp extends GameObjectImpl {
     }
 
     @Override
-    public void setX(int x) {}
+    public void setX(int x) {
+    }
 }

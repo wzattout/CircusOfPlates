@@ -20,7 +20,7 @@ public class OneToGo implements PlateStackState {
     @Override
     public boolean changeState(String color, PlateStack stack) {
         Stack<PlateStackState> temp = stack.getStateStack();
-        if(color.equals(this.color)) {
+        if (color.equals(this.color)) {
             temp.pop();
             temp.pop();
             stack.setStateStack(temp);
