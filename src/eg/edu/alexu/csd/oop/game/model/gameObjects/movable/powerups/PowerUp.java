@@ -7,4 +7,7 @@ public class PowerUp extends GameObjectImpl {
     public PowerUp(int x, int y, String[] paths) {
         super(x, y, paths);
     }
+
+    @Override
+    public void setX(int x) {}
 }
