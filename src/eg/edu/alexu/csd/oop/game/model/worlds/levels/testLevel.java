@@ -3,14 +3,16 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
+import eg.edu.alexu.csd.oop.game.model.utils.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class testLevel extends Level {
 
     private Mode mode;
     private Difficulty difficulty;
-
+    private static Stack<SnapShot> states = new Stack<>();
     public testLevel(Mode mode, Difficulty difficulty) {
         super(1400, 700, difficulty.getSpeed(), difficulty.getControlSpeed());
         this.mode = mode;
@@ -28,8 +30,30 @@ public class testLevel extends Level {
         this.movableObjects = new ArrayList<>();
     }
 
+
+    public void createSnapShot(){
+        SnapShot state = new SnapShot(mode);
+        states.push(state);
+    }
+
+    //if u want undo u can't redo again :)
+    public void undo(SnapShot m){
+        this.mode = m.getState();
+        states.pop();
+    }
+
+
+    public void replay(){
+        for(SnapShot i : states){
+            this.mode = i.getState();
+            this.setStatus(mode.getStatus());
+            mode.refresh();
+        }
+    }
+
     @Override
     public boolean refresh() {
+        createSnapShot();
         this.setStatus(mode.getStatus());
         return mode.refresh();
     }
