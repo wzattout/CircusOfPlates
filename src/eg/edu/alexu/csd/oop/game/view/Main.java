@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.game.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -14,16 +15,17 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 
 public class Main {
     public static void main(String[] args) {
-        JMenuBar menuBar = new JMenuBar();
-        testLevel level = new testLevel(new ArcadeMode(), new EasyDifficulty());
-        GameEngine.GameController gameController = GameEngine.start("Test Run", level,menuBar);
 
+        testLevel level = new testLevel(new ArcadeMode(new EasyDifficulty()));
+
+        JMenuBar menuBar = new JMenuBar();
 
         JMenu menu1 = new JMenu("File");
 
         JMenu menu2 = new JMenu("Options");
 
         JMenuItem newMenuItem = new JMenu("New Game");
+<<<<<<< HEAD
         JMenuItem ArcadeModeItem = new JMenu("Arcade Mode"); 
         JMenuItem TimeModeItem = new JMenu("Time Mode"); 
         JMenuItem easyArcadeModeItem = new JMenuItem("Easy");
@@ -98,6 +100,30 @@ public class Main {
 		});
         
         
+||||||| feda9d1
+        newMenuItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                //gameController.changeWorld();
+            }
+        });
+
+=======
+
+        GameEngine.GameController gameController = GameEngine.start("Test Run", level, menuBar);
+
+        newMenuItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                //gameController.changeWorld();
+            }
+        });
+
+>>>>>>> 6c90544ad5bb000abae65ad69f9106c1446b2782
         JMenuItem saveMenuItem = new JMenu("Save");
         saveMenuItem.addActionListener(new ActionListener() {
 
@@ -143,7 +169,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                level.undo();
+                //level.undo();
             }
         });
 

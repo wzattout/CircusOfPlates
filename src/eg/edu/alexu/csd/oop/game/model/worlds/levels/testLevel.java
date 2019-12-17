@@ -13,23 +13,21 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class testLevel extends Level {
+
     private Mode mode;
-    private Difficulty difficulty;
     private static Stack<SnapShot> states = new Stack<>();
 
-    public testLevel(Mode mode, Difficulty difficulty) {
-        super(1400, 700, difficulty.getSpeed(), difficulty.getControlSpeed());
+    public testLevel(Mode mode) {
+        super(1400, 700, mode.getDifficulty().getSpeed(), mode.getDifficulty().getControlSpeed());
         this.mode = mode;
-        this.difficulty = difficulty;
         this.setStatus(mode.getStatus());
-        this.constantObjects = difficulty.getConstantObjects();
+        this.constantObjects = mode.getDifficulty().getConstantObjects();
         this.controllableObjects = new ArrayList<>();
         ClownObject clown = new ClownObject(625, 475);
         this.controllableObjects.add(clown);
         this.controllableObjects.add(new RightStick(740, 452, clown));
         this.controllableObjects.add(new LeftStick(585, 435, clown));
-        this.movableObjects = new ArrayList<>();
-
+        this.movableObjects = mode.getDifficulty().getMovableObjects();
     }
 
     public void createSnapShot() {
@@ -37,7 +35,8 @@ public class testLevel extends Level {
         states.push(state);
     }
 
-    public void undo() {
+    public void undo(SnapShot m) {
+        this.mode = m.getState();
         states.pop();
         this.mode = states.peek().getState();
     }
@@ -52,15 +51,7 @@ public class testLevel extends Level {
 
     @Override
     public boolean refresh() {
-        createSnapShot();
-        Iterator<GameObject> iterator = movableObjects.iterator();
-        while (iterator.hasNext()) {
-            GameObject temp = iterator.next();
-            Shape shape = (Shape) temp;
-            shape.move(temp.getX(), temp.getY(), temp.getX() > 430 && temp.getX() < 910, shape.isRight());
-        }
-        this.movableObjects.add(ShapesPool.get_instance().get_shape());
-        this.setStatus(mode.getStatus());
+        this.setStatus(this.mode.getStatus());
         return mode.refresh();
     }
 }

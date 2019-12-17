@@ -1,11 +1,11 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
-public class Shape1 extends ShapeObject implements Shape {
+public class Plate extends ShapeObject implements Shape {
 
     private boolean isRight;
 
-    public Shape1(boolean right) {
-        super(right ? 1400 : 0, 90, new String[]{System.getProperty("user.dir") + "\\res\\plate_green.png"});
+    public Plate(boolean right, String color) {
+        super(right ? 1390 : 0, 88, new String[]{"/plate_" + color + ".png"});
         this.visible = true;
         this.height = getSpriteImages()[0].getWidth();
         this.width = getSpriteImages()[0].getHeight();
@@ -18,15 +18,15 @@ public class Shape1 extends ShapeObject implements Shape {
     }
 
     @Override
-    public void move(int x, int y, boolean falling, boolean right) {
+    public void move(boolean falling, boolean right) {
         if (falling) {
-            this.setY(y + 10);
+            this.setY(this.getY() + 1);
             return;
         }
         if (right) {
-            this.setX(x - 10);
+            this.setX(this.getX() - 1);
             return;
         }
-        this.setX(x + 10);
+        this.setX(this.getX() + 1);
     }
 }

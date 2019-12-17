@@ -18,15 +18,15 @@ public class Shape3 extends ShapeObject implements Shape {
     }
 
     @Override
-    public void move(int x, int y, boolean falling, boolean right) {
+    public void move(boolean falling, boolean right) {
         if (falling) {
-            this.setY(y + 30);
+            this.setY(this.getY() + 3);
             return;
         }
         if (right) {
-            this.setX(x - 10);
+            this.setX(this.getX() - 1);
             return;
         }
-        this.setX(x + 10);
+        this.setX(this.getX() + 1);
     }
 }

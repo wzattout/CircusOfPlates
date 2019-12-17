@@ -23,7 +23,7 @@ abstract public class GameObjectImpl implements GameObject {
         ArrayList<BufferedImage> spriteImages = new ArrayList<>();
         for (String path : paths) {
             try {
-                BufferedImage image = ImageIO.read(new File(path));
+                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(path));
                 spriteImages.add(image);
             } catch (IOException e) {
                 e.printStackTrace();
