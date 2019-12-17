@@ -6,7 +6,14 @@ import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape3;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
 public class ShapeFactory {
-
+	/**********************************singleton design pattern*********************************************/
+	private static ShapeFactory instance = new ShapeFactory();
+	private ShapeFactory() {}
+	
+	public static ShapeFactory get_instance() {
+		return instance;
+	}
+	/************************************************************************************************/
     public ShapeObject createShape(int x, boolean right) {
         if (x == 1) {
             return new Shape1(right);

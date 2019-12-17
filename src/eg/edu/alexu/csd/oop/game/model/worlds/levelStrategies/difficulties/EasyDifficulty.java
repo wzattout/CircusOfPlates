@@ -23,8 +23,7 @@ public class EasyDifficulty implements Difficulty {
     }
 
     @Override
-    public int getSpeed() {
-        return 10;
+    public int getSpeed() {return 10;
     }
 
     @Override
