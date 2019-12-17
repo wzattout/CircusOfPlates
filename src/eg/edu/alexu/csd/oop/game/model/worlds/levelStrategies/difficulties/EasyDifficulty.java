@@ -9,15 +9,10 @@ import java.util.List;
 
 public class EasyDifficulty implements Difficulty {
 
-<<<<<<< HEAD
-	
-	
-||||||| feda9d1
-=======
     private List<GameObject> movableObjects = new ArrayList<>();
->>>>>>> 6c90544ad5bb000abae65ad69f9106c1446b2782
 
     @Override
+
     public List<GameObject> getConstantObjects() {
         ArrayList<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
