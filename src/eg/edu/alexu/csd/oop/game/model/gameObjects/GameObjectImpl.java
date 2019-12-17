@@ -4,7 +4,6 @@ import eg.edu.alexu.csd.oop.game.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ abstract public class GameObjectImpl implements GameObject {
         ArrayList<BufferedImage> spriteImages = new ArrayList<>();
         for (String path : paths) {
             try {
-                BufferedImage image = ImageIO.read(new File(path));
+                BufferedImage image = ImageIO.read(getClass().getResourceAsStream(path));
                 spriteImages.add(image);
             } catch (IOException e) {
                 e.printStackTrace();

@@ -7,14 +7,17 @@ import java.util.Hashtable;
 import java.util.Random;
 
 public class ShapesPool {
-	/****************************************singleton design pattern*********************************************/
-	private static ShapesPool instance = new ShapesPool();
-	private ShapesPool() {}
-	
-	public static ShapesPool get_instance() {
-		return instance;
-	}
-	/************************************************************************************************************/
+    /****************************************singleton design pattern*********************************************/
+    private static ShapesPool instance = new ShapesPool();
+
+    private ShapesPool() {
+    }
+
+    public static ShapesPool get_instance() {
+        return instance;
+    }
+
+    /************************************************************************************************************/
     private static Hashtable<Integer, ShapeObject> used_shapes = new Hashtable<Integer, ShapeObject>();
     //private static Hashtable<Integer, ShapeObject> unused_shapes = new Hashtable<Integer, ShapeObject>();
 
@@ -36,10 +39,10 @@ public class ShapesPool {
             int key = e.nextElement();
             if (!used_shapes.get(key).isVisible()) {
                 ShapeObject temp = used_shapes.get(key);
-            	return temp;
+                return temp;
             }
         }
         Random r = new Random();
-        return ShapeFactory.get_instance().createShape(r.nextInt(3)+1, r.nextBoolean());
+        return ShapeFactory.get_instance().createShape(r.nextInt(3) + 1, r.nextBoolean());
     }
 }

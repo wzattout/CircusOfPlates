@@ -4,5 +4,5 @@ public interface Shape {
 
     void move(int x, int y, boolean falling, boolean right);
     
-    boolean isright();
+    boolean isRight();
 }

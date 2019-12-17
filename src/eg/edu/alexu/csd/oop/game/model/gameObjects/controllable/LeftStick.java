@@ -7,7 +7,7 @@ public class LeftStick extends GameObjectImpl {
     ClownObject clown;
 
     public LeftStick(int x, int y, ClownObject clown) {
-        super(x, y, new String[]{"C:\\Users\\dell\\Documents\\circus_of_plates\\res\\left_stick.png"});
+        super(x, y, new String[]{"/left_stick.png"});
         this.visible = true;
         this.clown = clown;
     }

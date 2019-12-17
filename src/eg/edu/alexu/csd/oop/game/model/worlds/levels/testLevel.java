@@ -2,7 +2,6 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape;
-import eg.edu.alexu.csd.oop.game.model.utils.ShapeFactory;
 import eg.edu.alexu.csd.oop.game.model.utils.ShapesPool;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 import eg.edu.alexu.csd.oop.game.GameObject;
@@ -15,8 +14,6 @@ import java.util.Stack;
 
 public class testLevel extends Level {
 
-	
-	
     private Mode mode;
     private Difficulty difficulty;
     private static Stack<SnapShot> states = new Stack<>();
@@ -32,8 +29,8 @@ public class testLevel extends Level {
         this.controllableObjects.add(clown);
         this.controllableObjects.add(new RightStick(740, 452, clown));
         this.controllableObjects.add(new LeftStick(585, 435, clown));
-        this.movableObjects = new ArrayList<>(); 
-        
+        this.movableObjects = new ArrayList<>();
+
     }
 
     public void createSnapShot() {
@@ -41,7 +38,6 @@ public class testLevel extends Level {
         states.push(state);
     }
 
-    //if u want undo u can't redo again :)
     public void undo(SnapShot m) {
         this.mode = m.getState();
         states.pop();
@@ -57,13 +53,12 @@ public class testLevel extends Level {
 
     @Override
     public boolean refresh() {
-        
-    	createSnapShot();
-    	Iterator<GameObject> iterator = movableObjects.iterator();
-        while(iterator.hasNext()) {
-    		GameObject temp = iterator.next();
-    		Shape shape = (Shape) temp;
-    		shape.move(temp.getX(), temp.getY(),temp.getX() > 470 && temp.getX() < 930,shape.isright());
+        createSnapShot();
+        Iterator<GameObject> iterator = movableObjects.iterator();
+        while (iterator.hasNext()) {
+            GameObject temp = iterator.next();
+            Shape shape = (Shape) temp;
+            shape.move(temp.getX(), temp.getY(), temp.getX() > 470 && temp.getX() < 930, shape.isRight());
         }
         this.movableObjects.add(ShapesPool.get_instance().get_shape());
         this.setStatus(mode.getStatus());
