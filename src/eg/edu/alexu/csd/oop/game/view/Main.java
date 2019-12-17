@@ -109,6 +109,6 @@ public class Main {
         menuBar.add(menu1);
         menuBar.add(menu2);
 
-        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(), new EasyDifficulty()), menuBar);
+        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(new EasyDifficulty())), menuBar);
     }
 }

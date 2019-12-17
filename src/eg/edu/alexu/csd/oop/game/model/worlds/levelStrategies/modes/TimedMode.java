@@ -1,12 +1,14 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
 import eg.edu.alexu.csd.oop.game.model.utils.Score;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
 public class TimedMode implements Mode {
 
     private long timeLeft;
     private int gameTime;
     private long startTime = System.currentTimeMillis();
+    private Difficulty difficulty;
 
     public TimedMode(int gameTime) {
         this.gameTime = gameTime;
@@ -23,5 +25,10 @@ public class TimedMode implements Mode {
     @Override
     public String getStatus() {
         return "Score: " + Score.getInstance().getScore() + " Time Left: " + Math.max(0, timeLeft) / 1000;
+    }
+
+    @Override
+    public Difficulty getDifficulty() {
+        return difficulty;
     }
 }

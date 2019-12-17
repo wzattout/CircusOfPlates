@@ -33,7 +33,7 @@ public class ShapesPool {
         }
     }*/
 
-    public ShapeObject get_shape() {
+    /*public ShapeObject get_shape() {
         Enumeration<Integer> e = used_shapes.keys();
         while (e.hasMoreElements()) {
             int key = e.nextElement();
@@ -44,5 +44,5 @@ public class ShapesPool {
         }
         Random r = new Random();
         return ShapeFactory.get_instance().createShape(r.nextInt(3) + 1, r.nextBoolean());
-    }
+    }*/
 }

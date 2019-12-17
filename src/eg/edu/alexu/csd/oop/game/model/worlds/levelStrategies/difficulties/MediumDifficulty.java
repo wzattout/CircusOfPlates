@@ -1,10 +1,14 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
 import java.util.List;
 
 public class MediumDifficulty implements Difficulty {
+
+    private List<GameObject> movableObjects;
+
     @Override
     public List<GameObject> getConstantObjects() {
         return null;
@@ -13,6 +17,11 @@ public class MediumDifficulty implements Difficulty {
     @Override
     public List<GameObject> getMovableObjects() {
         return null;
+    }
+
+    @Override
+    public void addMovableObjects(ShapeObject shape) {
+        movableObjects.add(shape);
     }
 
     @Override
@@ -26,12 +35,22 @@ public class MediumDifficulty implements Difficulty {
     }
 
     @Override
-    public int getPowerUpProbability() {
+    public double getPowerUpProbability() {
+        return 0;
+    }
+
+    @Override
+    public double getShapeProbability() {
         return 0;
     }
 
     @Override
     public int getGameTime() {
+        return 0;
+    }
+
+    @Override
+    public int getShapeCount() {
         return 0;
     }
 }

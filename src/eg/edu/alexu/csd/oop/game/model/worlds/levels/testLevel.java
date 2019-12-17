@@ -15,22 +15,19 @@ import java.util.Stack;
 public class testLevel extends Level {
 
     private Mode mode;
-    private Difficulty difficulty;
     private static Stack<SnapShot> states = new Stack<>();
 
-    public testLevel(Mode mode, Difficulty difficulty) {
-        super(1400, 700, difficulty.getSpeed(), difficulty.getControlSpeed());
+    public testLevel(Mode mode) {
+        super(1400, 700, mode.getDifficulty().getSpeed(), mode.getDifficulty().getControlSpeed());
         this.mode = mode;
-        this.difficulty = difficulty;
         this.setStatus(mode.getStatus());
-        this.constantObjects = difficulty.getConstantObjects();
+        this.constantObjects = mode.getDifficulty().getConstantObjects();
         this.controllableObjects = new ArrayList<>();
         ClownObject clown = new ClownObject(625, 475);
         this.controllableObjects.add(clown);
         this.controllableObjects.add(new RightStick(740, 452, clown));
         this.controllableObjects.add(new LeftStick(585, 435, clown));
-        this.movableObjects = new ArrayList<>();
-
+        this.movableObjects = mode.getDifficulty().getMovableObjects();
     }
 
     public void createSnapShot() {
@@ -53,15 +50,7 @@ public class testLevel extends Level {
 
     @Override
     public boolean refresh() {
-        createSnapShot();
-        Iterator<GameObject> iterator = movableObjects.iterator();
-        while (iterator.hasNext()) {
-            GameObject temp = iterator.next();
-            Shape shape = (Shape) temp;
-            shape.move(temp.getX(), temp.getY(), temp.getX() > 470 && temp.getX() < 930, shape.isRight());
-        }
-        this.movableObjects.add(ShapesPool.get_instance().get_shape());
-        this.setStatus(mode.getStatus());
+        this.setStatus(this.mode.getStatus());
         return mode.refresh();
     }
 }
