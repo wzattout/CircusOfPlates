@@ -38,6 +38,7 @@ public class testLevel extends Level {
     public void undo(SnapShot m) {
         this.mode = m.getState();
         states.pop();
+        this.mode = states.peek().getState();
     }
 
     public void replay() {
