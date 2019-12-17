@@ -1,24 +1,32 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
 public class Shape1 extends ShapeObject implements Shape {
-
-    public Shape1(boolean right) {
-        super(right ? 0 : 1, 0, new String[]{"shape1path"});
+	private boolean isright ;
+	
+	
+	public Shape1(boolean right) {
+        super(right ? 1400 : 0, 40, new String[]{"C:\\Users\\dell\\Documents\\circus_of_plates\\res\\slow_time.png"});
         this.visible = true;
         this.height = getSpriteImages()[0].getWidth();
         this.width = getSpriteImages()[0].getHeight();
+        this.isright = right;
+    }
+    
+	@Override
+    public boolean isright() {
+    	return this.isright;
     }
 
     @Override
     public void move(int x, int y, boolean falling, boolean right) {
         if (falling) {
-            y--;
+            this.setY(y+10);
             return;
         }
         if (right) {
-            x--;
+            this.setX(x-10);
             return;
         }
-        x++;
+        this.setX(x+10);
     }
 }
