@@ -2,6 +2,7 @@ package eg.edu.alexu.csd.oop.game.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,13 +16,18 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 public class Main {
     public static void main(String[] args) {
 
+        testLevel level = new testLevel(new ArcadeMode(new EasyDifficulty()));
+
         JMenuBar menuBar = new JMenuBar();
-     
+
         JMenu menu1 = new JMenu("File");
 
         JMenu menu2 = new JMenu("Options");
 
         JMenuItem newMenuItem = new JMenu("New Game");
+
+        GameEngine.GameController gameController = GameEngine.start("Test Run", level, menuBar);
+
         newMenuItem.addActionListener(new ActionListener() {
 
             @Override
@@ -76,7 +82,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                level.undo();
+                //level.undo();
             }
         });
 
@@ -129,6 +135,5 @@ public class Main {
         menuBar.add(menu1);
         menuBar.add(menu2);
 
-        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(new EasyDifficulty())), menuBar);
     }
 }
