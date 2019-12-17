@@ -14,14 +14,16 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 
 public class Main {
     public static void main(String[] args) {
-
         JMenuBar menuBar = new JMenuBar();
+
+        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(), new EasyDifficulty()), menuBar);
+
 
         JMenu menu1 = new JMenu("File");
 
         JMenu menu2 = new JMenu("Options");
 
-        JMenuItem newMenuItem = new JMenuItem("New Game");
+        JMenuItem newMenuItem = new JMenu("New Game");
         newMenuItem.addActionListener(new ActionListener() {
 
             @Override
@@ -31,7 +33,7 @@ public class Main {
             }
         });
 
-        JMenuItem saveMenuItem = new JMenuItem("Save");
+        JMenuItem saveMenuItem = new JMenu("Save");
         saveMenuItem.addActionListener(new ActionListener() {
 
             @Override
@@ -42,7 +44,7 @@ public class Main {
             }
         });
 
-        JMenuItem loadMenuItem = new JMenuItem("Load");
+        JMenuItem loadMenuItem = new JMenu("Load");
         loadMenuItem.addActionListener(new ActionListener() {
 
             @Override
@@ -63,9 +65,14 @@ public class Main {
         });
 
         menu1.add(newMenuItem);
+        menu1.addSeparator();
         menu1.add(saveMenuItem);
         menu1.add(loadMenuItem);
+        menu1.addSeparator();
         menu1.add(exitMenuItem);
+
+
+
 
         JMenuItem undoMenuItem = new JMenuItem("Undo");
         undoMenuItem.addActionListener(new ActionListener() {
@@ -87,28 +94,44 @@ public class Main {
             }
         });
 
-        JMenuItem resumeItem = new JMenu("Resume");
+
+        JMenuItem resumeItem = new JMenuItem("Resume");
+        JMenuItem pauseItem = new JMenuItem("Pause");
+
         resumeItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                menu2.remove(resumeItem);
+                menu2.remove(undoMenuItem);
+                menu2.remove(replayMenuItem);
+                menu2.add(pauseItem);
+                menu2.add(undoMenuItem);
+                menu2.add(replayMenuItem);
+                gameController.resume();
             }
         });
 
-        JMenuItem stopItem = new JMenuItem("Stop");
-        stopItem.addActionListener(new ActionListener() {
+
+        pauseItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                menu2.remove(pauseItem);
+                menu2.remove(undoMenuItem);
+                menu2.remove(replayMenuItem);
+                menu2.add(resumeItem);
+                menu2.add(undoMenuItem);
+                menu2.add(replayMenuItem);
+                gameController.pause();
             }
         });
 
-        menu2.add(resumeItem);
+
+
+        menu2.add(pauseItem);
         menu2.add(undoMenuItem);
         menu2.add(replayMenuItem);
         menuBar.add(menu1);
         menuBar.add(menu2);
 
-        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(), new EasyDifficulty()), menuBar);
     }
 }
