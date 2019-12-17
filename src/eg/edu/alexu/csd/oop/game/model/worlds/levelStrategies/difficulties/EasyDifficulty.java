@@ -8,6 +8,8 @@ import java.util.List;
 
 public class EasyDifficulty implements Difficulty {
 
+	
+	
 
     @Override
     public List<GameObject> getConstantObjects() {

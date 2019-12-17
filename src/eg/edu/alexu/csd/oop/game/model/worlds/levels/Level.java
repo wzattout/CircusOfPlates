@@ -5,7 +5,7 @@ import eg.edu.alexu.csd.oop.game.World;
 
 import java.util.List;
 
-abstract class Level implements World {
+public abstract class Level implements World {
 
     protected List<GameObject> constantObjects;
     protected List<GameObject> movableObjects;
