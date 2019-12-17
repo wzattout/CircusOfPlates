@@ -2,9 +2,12 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 
+
 import java.util.List;
 
 public class HardDifficulty implements Difficulty {
+
+
     @Override
     public List<GameObject> getConstantObjects() {
         return null;

@@ -5,6 +5,8 @@ import eg.edu.alexu.csd.oop.game.GameObject;
 import java.util.List;
 
 public class MediumDifficulty implements Difficulty {
+
+
     @Override
     public List<GameObject> getConstantObjects() {
         return null;

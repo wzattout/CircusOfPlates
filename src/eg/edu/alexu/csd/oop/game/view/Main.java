@@ -15,8 +15,8 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 public class Main {
     public static void main(String[] args) {
         JMenuBar menuBar = new JMenuBar();
-
-        GameEngine.GameController gameController = GameEngine.start("Test Run", new testLevel(new ArcadeMode(), new EasyDifficulty()), menuBar);
+        testLevel level = new testLevel(new ArcadeMode(), new EasyDifficulty());
+        GameEngine.GameController gameController = GameEngine.start("Test Run", level,menuBar);
 
 
         JMenu menu1 = new JMenu("File");
@@ -29,7 +29,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                //gameController.changeWorld();
             }
         });
 
@@ -72,15 +72,13 @@ public class Main {
         menu1.add(exitMenuItem);
 
 
-
-
         JMenuItem undoMenuItem = new JMenuItem("Undo");
         undoMenuItem.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                level.undo();
             }
         });
 
@@ -90,7 +88,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                level.replay();
             }
         });
 

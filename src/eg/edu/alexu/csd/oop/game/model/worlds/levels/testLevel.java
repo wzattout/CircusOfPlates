@@ -13,7 +13,6 @@ import java.util.Iterator;
 import java.util.Stack;
 
 public class testLevel extends Level {
-
     private Mode mode;
     private Difficulty difficulty;
     private static Stack<SnapShot> states = new Stack<>();
@@ -38,9 +37,9 @@ public class testLevel extends Level {
         states.push(state);
     }
 
-    public void undo(SnapShot m) {
-        this.mode = m.getState();
+    public void undo() {
         states.pop();
+        this.mode = states.peek().getState();
     }
 
     public void replay() {
@@ -58,7 +57,7 @@ public class testLevel extends Level {
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();
             Shape shape = (Shape) temp;
-            shape.move(temp.getX(), temp.getY(), temp.getX() > 470 && temp.getX() < 930, shape.isRight());
+            shape.move(temp.getX(), temp.getY(), temp.getX() > 430 && temp.getX() < 910, shape.isRight());
         }
         this.movableObjects.add(ShapesPool.get_instance().get_shape());
         this.setStatus(mode.getStatus());
