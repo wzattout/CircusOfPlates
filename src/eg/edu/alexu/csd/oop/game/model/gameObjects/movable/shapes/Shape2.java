@@ -5,7 +5,7 @@ public class Shape2 extends ShapeObject implements Shape {
     private boolean isRight;
 
     public Shape2(boolean right) {
-        super(right ? 1400 : 0, 90, new String[]{System.getProperty("user.dir") + "\\res\\plate_red.png"});
+        super(right ? 1400 : 0, 90, new String[]{"/plate_red.png"});
         this.visible = true;
         this.height = getSpriteImages()[0].getWidth();
         this.width = getSpriteImages()[0].getHeight();
