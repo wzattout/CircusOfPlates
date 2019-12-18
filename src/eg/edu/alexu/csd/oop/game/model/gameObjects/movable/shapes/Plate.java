@@ -1,9 +1,11 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
+import java.util.Random;
+
 public class Plate extends ShapeObject {
 
     public Plate(boolean right, String color) {
-        super(right ? 1340 : 0, 38, new String[]{"/plate_" + color + ".png"});
+        super(right ? 1340 : 0, Math.random()>.5?38:200, new String[]{"/plate_" + color + ".png"});
         this.isRight = right;
     }
 

@@ -9,8 +9,8 @@ public abstract class ShapeObject extends GameObjectImpl {
     public ShapeObject(int x, int y, String[] paths) {
         super(x, y, paths);
         this.visible = true;
-        this.height = getSpriteImages()[0].getWidth();
-        this.width = getSpriteImages()[0].getHeight();
+        this.height = getSpriteImages()[0].getHeight();
+        this.width = getSpriteImages()[0].getWidth();
     }
 
     abstract public void move(boolean falling, boolean right, int speed);

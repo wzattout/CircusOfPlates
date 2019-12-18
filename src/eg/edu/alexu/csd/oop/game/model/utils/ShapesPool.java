@@ -37,7 +37,7 @@ public class ShapesPool {
         Enumeration<Integer> e = used_shapes.keys();
         while (e.hasMoreElements()) {
             int key = e.nextElement();
-            if (!used_shapes.get(key).isVisible()) {
+            if(!used_shapes.get(key).isVisible()) {
                 ShapeObject temp = used_shapes.get(key);
                 return temp;
             }

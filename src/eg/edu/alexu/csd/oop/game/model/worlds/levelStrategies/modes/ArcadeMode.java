@@ -17,6 +17,7 @@ public class ArcadeMode implements Mode {
     private long startTime = System.currentTimeMillis();
     private Difficulty difficulty;
     private ShapeFactory factory;
+    private long lastTimeShapeCreated = 0;
 
     public ArcadeMode(Difficulty difficulty) {
         this.difficulty = difficulty;
@@ -26,8 +27,10 @@ public class ArcadeMode implements Mode {
     @Override
     public boolean refresh() {
         timeElapsed = System.currentTimeMillis() - startTime;
-        if (Math.random() < difficulty.getShapeProbability())
+        if (Math.random() < difficulty.getShapeProbability() && System.currentTimeMillis() - lastTimeShapeCreated > 1000) {
+            lastTimeShapeCreated = System.currentTimeMillis();
             difficulty.setMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), new Random().nextBoolean()));
+        }
         Iterator<GameObject> iterator = difficulty.getMovableObjects().iterator();
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();

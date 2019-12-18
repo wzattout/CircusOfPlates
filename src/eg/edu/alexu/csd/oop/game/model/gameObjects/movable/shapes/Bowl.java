@@ -3,7 +3,7 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 public class Bowl extends ShapeObject {
 
     public Bowl(boolean right, String color) {
-        super(right ? 1400 : 0, 12, new String[]{"/bowl_" + color + ".png"});
+        super(right ? 1400 : 0,Math.random()>.5?12:200-32, new String[]{"/bowl_" + color + ".png"});
         this.isRight = right;
     }
 
