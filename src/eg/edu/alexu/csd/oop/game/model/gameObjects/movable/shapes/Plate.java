@@ -7,8 +7,8 @@ public class Plate extends ShapeObject implements Shape {
     public Plate(boolean right, String color) {
         super(right ? 1390 : 0, 88, new String[]{"/plate_" + color + ".png"});
         this.visible = true;
-        this.height = getSpriteImages()[0].getWidth();
-        this.width = getSpriteImages()[0].getHeight();
+        this.height = getSpriteImages()[0].getHeight();
+        this.width = getSpriteImages()[0].getWidth();
         this.isRight = right;
     }
 

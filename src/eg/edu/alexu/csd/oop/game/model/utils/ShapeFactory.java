@@ -6,6 +6,7 @@ import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape3;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
 import java.util.Enumeration;
+import java.util.Random;
 
 public class ShapeFactory {
     /**********************************singleton design pattern*********************************************
@@ -23,7 +24,7 @@ public class ShapeFactory {
     public ShapeObject createShape(int x, boolean right) {
         //if (x == 1) {
         double color = Math.random() * 3;
-        return new Plate(right, colors[(int) color]);
+        return new Plate(new Random().nextBoolean(),colors[(int) color]);
         //} else if (x == 2) {
         //    return new Shape2(right);
         //} else if (x == 3) {
