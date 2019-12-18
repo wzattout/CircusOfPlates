@@ -41,6 +41,7 @@ public class ArcadeMode implements Mode {
                 bowl.move(bowl.getX() > 440 && bowl.getX() < 900, bowl.isRight(), difficulty.getSpeed());
             }
         }
+
         return remainingLives > 0;
     }
 
