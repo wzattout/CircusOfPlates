@@ -1,6 +1,6 @@
-package eg.edu.alexu.csd.oop.game.model.utils;
+package eg.edu.alexu.csd.oop.game.model.utils.score;
 
-import eg.edu.alexu.csd.oop.game.control.plateStack.PlateStack;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.PlateStack;
 
 public class Score implements Observer {
 

@@ -1,4 +1,6 @@
-package eg.edu.alexu.csd.oop.game.model.utils;
+package eg.edu.alexu.csd.oop.game.model.utils.score.plateStack;
+
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
 
 public interface Subject {
 

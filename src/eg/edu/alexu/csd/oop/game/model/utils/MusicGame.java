@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.model.gameObjects;
+package eg.edu.alexu.csd.oop.game.model.utils;
 
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -25,6 +25,4 @@ public class MusicGame {
 
         }
     }
-
-
 }

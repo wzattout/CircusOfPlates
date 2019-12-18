@@ -16,8 +16,8 @@ public class EasyDifficulty implements Difficulty {
     public List<GameObject> getConstantObjects() {
         ArrayList<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
-        constantObjects.add(new ConveyorBelt(-30, 100));
-        constantObjects.add(new ConveyorBelt(960, 100));
+        constantObjects.add(new ConveyorBelt(-30, 50));
+        constantObjects.add(new ConveyorBelt(960, 50));
         return constantObjects;
     }
 
@@ -27,13 +27,13 @@ public class EasyDifficulty implements Difficulty {
     }
 
     @Override
-    public void addMovableObjects(ShapeObject shape) {
+    public void setMovableObjects(ShapeObject shape) {
         movableObjects.add(shape);
     }
 
     @Override
     public int getSpeed() {
-        return 10;
+        return 1;
     }
 
     @Override
@@ -59,5 +59,9 @@ public class EasyDifficulty implements Difficulty {
     @Override
     public int getShapeCount() {
         return 1;
+    }
+
+    public String[] getColors() {
+        return new String[]{"red", "yellow", "green"};
     }
 }

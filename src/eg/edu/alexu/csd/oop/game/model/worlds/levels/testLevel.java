@@ -1,7 +1,7 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
-import eg.edu.alexu.csd.oop.game.control.SnapShot;
+import eg.edu.alexu.csd.oop.game.model.utils.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
 import java.util.ArrayList;

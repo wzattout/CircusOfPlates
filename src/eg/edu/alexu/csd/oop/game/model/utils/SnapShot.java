@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.oop.game.control;
+package eg.edu.alexu.csd.oop.game.model.utils;
 
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 

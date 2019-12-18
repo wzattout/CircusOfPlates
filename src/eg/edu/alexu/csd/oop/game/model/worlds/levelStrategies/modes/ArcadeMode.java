@@ -1,8 +1,9 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Bowl;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Plate;
-import eg.edu.alexu.csd.oop.game.model.utils.Score;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
 import eg.edu.alexu.csd.oop.game.model.utils.ShapeFactory;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
@@ -15,24 +16,30 @@ public class ArcadeMode implements Mode {
     private int remainingLives = 3;
     private long startTime = System.currentTimeMillis();
     private Difficulty difficulty;
-    private ShapeFactory factory = new ShapeFactory();
+    private ShapeFactory factory;
 
     public ArcadeMode(Difficulty difficulty) {
         this.difficulty = difficulty;
+        factory = new ShapeFactory(difficulty.getColors());
     }
 
     @Override
     public boolean refresh() {
         timeElapsed = System.currentTimeMillis() - startTime;
         if (Math.random() < difficulty.getShapeProbability())
-            difficulty.addMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), new Random().nextBoolean()));
+            difficulty.setMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), new Random().nextBoolean()));
         Iterator<GameObject> iterator = difficulty.getMovableObjects().iterator();
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();
-            Plate plate = null;
-            if (temp instanceof Plate)
+            Plate plate;
+            Bowl bowl;
+            if (temp instanceof Plate) {
                 plate = (Plate) temp;
-            plate.move(plate.getX() > 440 && plate.getX() < 900, plate.isRight());
+                plate.move(plate.getX() > 440 && plate.getX() < 900, plate.isRight(), difficulty.getSpeed());
+            } else if (temp instanceof Bowl) {
+                bowl = (Bowl) temp;
+                bowl.move(bowl.getX() > 440 && bowl.getX() < 900, bowl.isRight(), difficulty.getSpeed());
+            }
         }
         return remainingLives > 0;
     }

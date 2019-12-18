@@ -1,6 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
-import eg.edu.alexu.csd.oop.game.model.utils.Score;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
 public class TimedMode implements Mode {

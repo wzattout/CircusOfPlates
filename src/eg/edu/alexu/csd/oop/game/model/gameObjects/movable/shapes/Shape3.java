@@ -1,6 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
-public class Shape3 extends ShapeObject implements Shape {
+public class Shape3 extends ShapeObject {
 
     private boolean isRight;
 
@@ -13,12 +13,7 @@ public class Shape3 extends ShapeObject implements Shape {
     }
 
     @Override
-    public boolean isRight() {
-        return this.isRight;
-    }
-
-    @Override
-    public void move(boolean falling, boolean right) {
+    public void move(boolean falling, boolean right, int speed) {
         if (falling) {
             this.setY(this.getY() + 3);
             return;

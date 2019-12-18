@@ -19,9 +19,11 @@ public interface Difficulty {
 
     List<GameObject> getMovableObjects();
 
-    void addMovableObjects(ShapeObject shape);
+    void setMovableObjects(ShapeObject shape);
 
     int getGameTime();
 
     int getShapeCount();
+
+    String[] getColors();
 }

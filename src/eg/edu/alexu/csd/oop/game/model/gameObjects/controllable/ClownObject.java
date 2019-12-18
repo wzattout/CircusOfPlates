@@ -2,6 +2,8 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects.controllable;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
 
+import java.awt.*;
+
 public class ClownObject extends GameObjectImpl {
 
     public ClownObject(int x, int y) {

@@ -15,7 +15,7 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 public class Main {
     public static void main(String[] args) {
 
-        testLevel level = new testLevel(new ArcadeMode(new EasyDifficulty()));
+        testLevel level = new testLevel(new ArcadeMode(new MediumDifficulty()));
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -205,7 +205,6 @@ public class Main {
                 gameController.pause();
             }
         });
-
 
         menu2.add(pauseItem);
         menu2.add(undoMenuItem);

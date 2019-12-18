@@ -1,7 +1,7 @@
-package eg.edu.alexu.csd.oop.game.control.plateStack;
+package eg.edu.alexu.csd.oop.game.model.utils.score.plateStack;
 
-import eg.edu.alexu.csd.oop.game.control.plateStack.states.*;
-import eg.edu.alexu.csd.oop.game.model.utils.*;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.states.*;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
 
 import java.util.ArrayList;
 import java.util.Stack;

@@ -4,7 +4,6 @@ import eg.edu.alexu.csd.oop.game.GameObject;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -71,4 +70,12 @@ abstract public class GameObjectImpl implements GameObject {
     public BufferedImage[] getSpriteImages() {
         return spriteImages;
     }
+
+    /*protected void resize(int scaledWidth, int scaledHeight){
+        BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, spriteImages[0].getType());
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(spriteImages[0], 0, 0, scaledWidth, scaledHeight, null);
+        g2d.dispose();
+        spriteImages[0] = outputImage;
+    }*/
 }

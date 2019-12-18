@@ -21,18 +21,18 @@ public class HardDifficulty implements Difficulty {
     }
 
     @Override
-    public void addMovableObjects(ShapeObject shape) {
+    public void setMovableObjects(ShapeObject shape) {
         movableObjects.add(shape);
     }
 
     @Override
     public int getSpeed() {
-        return 0;
+        return 2;
     }
 
     @Override
     public int getControlSpeed() {
-        return 0;
+        return 7;
     }
 
     @Override
@@ -53,5 +53,10 @@ public class HardDifficulty implements Difficulty {
     @Override
     public int getShapeCount() {
         return 0;
+    }
+
+    @Override
+    public String[] getColors() {
+        return new String[0];
     }
 }
