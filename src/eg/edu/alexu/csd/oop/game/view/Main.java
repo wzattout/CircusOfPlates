@@ -24,6 +24,89 @@ public class Main {
         JMenu menu2 = new JMenu("Options");
 
         JMenuItem newMenuItem = new JMenu("New Game");
+        JMenuItem ArcadeModeItem = new JMenu("Arcade Mode");
+        JMenuItem TimeModeItem = new JMenu("Time Mode");
+        JMenuItem easyArcadeModeItem = new JMenuItem("Easy");
+        JMenuItem normalArcadeModeItem = new JMenuItem("Normal");
+        JMenuItem hardArcadeModeItem = new JMenuItem("Hard");
+        JMenuItem easyTimeModeItem = new JMenuItem("Easy");
+        JMenuItem normalTimeModeItem = new JMenuItem("Normal");
+        JMenuItem hardTimeModeItem = new JMenuItem("Hard");
+
+        ArcadeModeItem.add(easyArcadeModeItem);
+        ArcadeModeItem.add(normalArcadeModeItem);
+        ArcadeModeItem.add(hardArcadeModeItem);
+        TimeModeItem.add(easyTimeModeItem);
+        TimeModeItem.add(normalTimeModeItem);
+        TimeModeItem.add(hardTimeModeItem);
+
+        newMenuItem.add(ArcadeModeItem);
+        newMenuItem.add(TimeModeItem);
+
+        easyArcadeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                //gameController.changeWorld(new LeveArcadeMode(), new EasyDifficulty());
+            }
+        });
+
+        normalArcadeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        hardArcadeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        easyTimeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        normalTimeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        hardTimeModeItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+
+        newMenuItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                //gameController.changeWorld();
+            }
+        });
+
 
         GameEngine.GameController gameController = GameEngine.start("Test Run", level, menuBar);
 
@@ -122,6 +205,7 @@ public class Main {
                 gameController.pause();
             }
         });
+
 
         menu2.add(pauseItem);
         menu2.add(undoMenuItem);

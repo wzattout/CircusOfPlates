@@ -12,6 +12,7 @@ public class EasyDifficulty implements Difficulty {
     private List<GameObject> movableObjects = new ArrayList<>();
 
     @Override
+
     public List<GameObject> getConstantObjects() {
         ArrayList<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));

@@ -10,18 +10,18 @@ import java.io.InputStream;
 public class MusicGame {
 
     private String path;
-    public MusicGame(String path){
+
+    public MusicGame(String path) {
         this.path = path;
     }
 
-    public void playMusic(){
+    public void playMusic() {
         InputStream music;
-        try{
+        try {
             music = new FileInputStream(new File(path));
             AudioStream audio = new AudioStream(music);
             AudioPlayer.player.start(audio);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
