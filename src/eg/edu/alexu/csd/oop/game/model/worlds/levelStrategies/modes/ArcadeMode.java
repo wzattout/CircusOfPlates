@@ -7,11 +7,14 @@ import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
 import eg.edu.alexu.csd.oop.game.model.utils.ShapeFactory;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 public class ArcadeMode implements Mode {
 
+    private GameObject leftStick, rightStick;
     private long timeElapsed;
     private int remainingLives = 3;
     private long startTime = System.currentTimeMillis();
@@ -23,6 +26,8 @@ public class ArcadeMode implements Mode {
         this.difficulty = difficulty;
         factory = new ShapeFactory(difficulty.getColors());
     }
+
+
 
     @Override
     public boolean refresh() {
@@ -36,7 +41,10 @@ public class ArcadeMode implements Mode {
             GameObject temp = iterator.next();
             Plate plate;
             Bowl bowl;
-            if (temp instanceof Plate) {
+            if(Intersection(temp)){
+                System.out.println("yes");
+            }
+            else if (temp instanceof Plate) {
                 plate = (Plate) temp;
                 plate.move(plate.getX() > 440 && plate.getX() < 900, plate.isRight(), difficulty.getSpeed());
             } else if (temp instanceof Bowl) {
@@ -54,7 +62,28 @@ public class ArcadeMode implements Mode {
     }
 
     @Override
+    public void setSticksObjects(GameObject[] sticks) {
+        leftStick = sticks[0];
+        rightStick = sticks[1];
+    }
+
+
+    @Override
     public Difficulty getDifficulty() {
         return difficulty;
     }
+
+
+    private boolean Intersection(GameObject shape){
+        return ((shape.getX()<leftStick.getX()+leftStick.getWidth()/2&&shape.getX()>leftStick.getX()-leftStick.getWidth()/2)||
+                (shape.getX()<rightStick.getX()+rightStick.getWidth()/2&&shape.getX()>rightStick.getX()-rightStick.getWidth()/2))&&
+                ((shape.getY()+shape.getHeight()/2-leftStick.getY()-leftStick.getHeight()/2<0)||
+                        (shape.getY()+shape.getHeight()/2-rightStick.getY()-rightStick.getHeight()/2<0));
+    }
+
+
+
+
+
+
 }
