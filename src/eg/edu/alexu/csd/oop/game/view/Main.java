@@ -2,7 +2,6 @@ package eg.edu.alexu.csd.oop.game.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -75,7 +74,6 @@ public class Main {
         menu1.addSeparator();
         menu1.add(exitMenuItem);
 
-
         JMenuItem undoMenuItem = new JMenuItem("Undo");
         undoMenuItem.addActionListener(new ActionListener() {
 
@@ -96,7 +94,6 @@ public class Main {
             }
         });
 
-
         JMenuItem resumeItem = new JMenuItem("Resume");
         JMenuItem pauseItem = new JMenuItem("Pause");
 
@@ -113,7 +110,6 @@ public class Main {
             }
         });
 
-
         pauseItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,13 +123,10 @@ public class Main {
             }
         });
 
-
-
         menu2.add(pauseItem);
         menu2.add(undoMenuItem);
         menu2.add(replayMenuItem);
         menuBar.add(menu1);
         menuBar.add(menu2);
-
     }
 }

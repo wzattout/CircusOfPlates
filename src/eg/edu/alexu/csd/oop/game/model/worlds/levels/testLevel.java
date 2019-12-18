@@ -1,15 +1,10 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape;
-import eg.edu.alexu.csd.oop.game.model.utils.ShapesPool;
-import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
-import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.control.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Stack;
 
 public class testLevel extends Level {
