@@ -3,8 +3,9 @@ package eg.edu.alexu.csd.oop.game.model.utils.plateStates;
 public class Stacked implements PlateState {
 
     @Override
-    public void checkState() {
+    public PlateState checkState() {
 
+        return null;
     }
 
     @Override
