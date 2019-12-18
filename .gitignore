@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 .idea
-/bin/
-||||||| feda9d1
-.idea
-=======
-.idea
+bin
 out
->>>>>>> 6c90544ad5bb000abae65ad69f9106c1446b2782
+70_circus_of_plates.iml
+engine_v3.jar
