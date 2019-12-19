@@ -1,8 +1,8 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Bowl;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Cake;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Plate;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Shape3;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
 public class ShapeFactory {
@@ -13,15 +13,15 @@ public class ShapeFactory {
         this.colors = colors;
     }
 
-    public ShapeObject createShape(int x, boolean right) {
+    public ShapeObject createShape(int x, boolean top, boolean right) {
         double color = Math.random() * colors.length;
-        switch(x) {
+        switch (x) {
             case 0:
-                return new Plate(right, colors[(int) color]);
+                return new Plate(right, top, colors[(int) color]);
             case 1:
-                return new Bowl(right, colors[(int) color]);
+                return new Bowl(right, top, colors[(int) color]);
             case 2:
-                return new Shape3(right);
+                return new Cake(right, top, colors[(int) color]);
         }
         return null;
     }

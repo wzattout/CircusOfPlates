@@ -2,13 +2,13 @@ package eg.edu.alexu.csd.oop.game.model.utils;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Random;
 
 public class ShapesPool {
     /****************************************singleton design pattern*********************************************/
     private static ShapesPool instance = new ShapesPool();
+    /************************************************************************************************************/
+    private static Hashtable<Integer, ShapeObject> used_shapes = new Hashtable<Integer, ShapeObject>();
 
     private ShapesPool() {
     }
@@ -16,9 +16,6 @@ public class ShapesPool {
     public static ShapesPool get_instance() {
         return instance;
     }
-
-    /************************************************************************************************************/
-    private static Hashtable<Integer, ShapeObject> used_shapes = new Hashtable<Integer, ShapeObject>();
     //private static Hashtable<Integer, ShapeObject> unused_shapes = new Hashtable<Integer, ShapeObject>();
 
     /*public ShapesPool() {

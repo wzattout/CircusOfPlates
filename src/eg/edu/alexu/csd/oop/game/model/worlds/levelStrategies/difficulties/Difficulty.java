@@ -15,6 +15,8 @@ public interface Difficulty {
 
     double getShapeProbability();
 
+    List<GameObject> getControllableObjects();
+
     List<GameObject> getConstantObjects();
 
     List<GameObject> getMovableObjects();
@@ -26,4 +28,6 @@ public interface Difficulty {
     int getShapeCount();
 
     String[] getColors();
+
+    boolean getConveyorPosition();
 }

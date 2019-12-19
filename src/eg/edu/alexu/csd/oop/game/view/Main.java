@@ -1,16 +1,13 @@
 package eg.edu.alexu.csd.oop.game.view;
 
+import eg.edu.alexu.csd.oop.game.GameEngine;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.MediumDifficulty;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.ArcadeMode;
+import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-
-import eg.edu.alexu.csd.oop.game.GameEngine;
-import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.*;
-import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.*;
-import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 
 public class Main {
     public static void main(String[] args) {
