@@ -1,8 +1,15 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.controllable;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.Subject;
 
-public class ClownObject extends GameObjectImpl {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ClownObject extends GameObjectImpl implements Subject {
+
+    List<Observer> Observers = new ArrayList<>();
 
     public ClownObject(int x, int y) {
         super(x, y, new String[]{"/clown.png"});
@@ -14,5 +21,22 @@ public class ClownObject extends GameObjectImpl {
 
     @Override
     public void setY(int y) {
+    }
+
+    @Override
+    public void setX(int x) {
+        super.setX(x);
+        notify_observers();
+    }
+
+    @Override
+    public void register_observer(Observer e) {
+        Observers.add(e);
+    }
+
+    @Override
+    public void notify_observers() {
+        for (Observer observer : Observers)
+            observer.update();
     }
 }

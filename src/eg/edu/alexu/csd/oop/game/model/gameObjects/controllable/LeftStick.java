@@ -1,8 +1,9 @@
 package eg.edu.alexu.csd.oop.game.model.gameObjects.controllable;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
 
-public class LeftStick extends GameObjectImpl {
+public class LeftStick extends GameObjectImpl implements Observer {
 
     private ClownObject clown;
 
@@ -21,5 +22,10 @@ public class LeftStick extends GameObjectImpl {
     @Override
     public void setX(int x) {
         this.x = clown.getX() - 40;
+    }
+
+    @Override
+    public void update() {
+        setX(0);
     }
 }

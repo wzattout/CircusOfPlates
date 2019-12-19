@@ -30,11 +30,6 @@ public class PlateStack implements Subject {
     }
 
     @Override
-    public void remove_observer(Observer e) {
-        observers.remove(e);
-    }
-
-    @Override
     public void notify_observers() {
         for (Observer e : observers) {
             e.update();
