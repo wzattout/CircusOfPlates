@@ -1,11 +1,15 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.LeftStick;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.RightStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 import eg.edu.alexu.csd.oop.game.model.utils.ShapeFactory;
 import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -17,23 +21,26 @@ public class ArcadeMode implements Mode {
     private long startTime = System.currentTimeMillis();
     private Difficulty difficulty;
     private ShapeFactory factory;
-    private long lastTimeShapeCreated = 0;
-    private List<GameObject> intersectedObjects;
+    private List<GameObject> intersectedObjects = new ArrayList<>();
 
     public ArcadeMode(Difficulty difficulty) {
         this.difficulty = difficulty;
         factory = new ShapeFactory(difficulty.getColors());
-        intersectedObjects = difficulty.getConstantObjects();
-        intersectedObjects.addAll(difficulty.getControllableObjects());
+        for(GameObject gameObject : difficulty.getConstantObjects()){
+            if(gameObject instanceof ConveyorBelt)
+                intersectedObjects.add(gameObject);
+        }
+        for(GameObject gameObject : difficulty.getMovableObjects()){
+            if(gameObject instanceof LeftStick || gameObject instanceof RightStick)
+                intersectedObjects.add(gameObject);
+        }
     }
 
     @Override
     public boolean refresh() {
-        timeElapsed = System.currentTimeMillis() - startTime;
-        if (Math.random() < difficulty.getShapeProbability() && System.currentTimeMillis() - lastTimeShapeCreated > 1000) {
-            lastTimeShapeCreated = System.currentTimeMillis();
+        timeElapsed = startTime - System.currentTimeMillis();
+        if (Math.random() < difficulty.getShapeProbability())
             difficulty.setMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), difficulty.getConveyorPosition(), new Random().nextBoolean()));
-        }
         Iterator<GameObject> iterator = difficulty.getMovableObjects().iterator();
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();
