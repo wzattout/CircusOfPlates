@@ -1,6 +1,7 @@
 package eg.edu.alexu.csd.oop.game.view;
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.EasyDifficulty;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.MediumDifficulty;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.ArcadeMode;
 import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
@@ -14,7 +15,7 @@ public class Main {
 
 
 
-        testLevel level = new testLevel(new ArcadeMode(new MediumDifficulty()));
+        testLevel level = new testLevel(new ArcadeMode(new EasyDifficulty()));
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -150,6 +151,7 @@ public class Main {
                 System.exit(0);
             }
         });
+
 
         menu1.add(newMenuItem);
         menu1.addSeparator();

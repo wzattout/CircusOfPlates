@@ -9,6 +9,7 @@ import eg.edu.alexu.csd.oop.game.model.utils.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Stack;
 
 public class testLevel extends Level {
