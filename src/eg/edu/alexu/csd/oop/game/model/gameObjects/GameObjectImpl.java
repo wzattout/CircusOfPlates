@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 abstract public class GameObjectImpl implements GameObject {
 
-    protected int x;
-    private int y;
+    public int x;
     protected int width;
     protected int height;
     protected boolean visible;
+    private int y;
     private BufferedImage[] spriteImages;
 
     public GameObjectImpl(int x, int y, String[] paths) {
@@ -33,7 +33,7 @@ abstract public class GameObjectImpl implements GameObject {
 
     @Override
     public int getX() {
-        return Math.max(-40, Math.min(x, 1400));
+        return Math.max(-100, Math.min(x, 1400));
     }
 
     @Override
@@ -70,12 +70,4 @@ abstract public class GameObjectImpl implements GameObject {
     public BufferedImage[] getSpriteImages() {
         return spriteImages;
     }
-
-    /*protected void resize(int scaledWidth, int scaledHeight){
-        BufferedImage outputImage = new BufferedImage(scaledWidth, scaledHeight, spriteImages[0].getType());
-        Graphics2D g2d = outputImage.createGraphics();
-        g2d.drawImage(spriteImages[0], 0, 0, scaledWidth, scaledHeight, null);
-        g2d.dispose();
-        spriteImages[0] = outputImage;
-    }*/
 }
