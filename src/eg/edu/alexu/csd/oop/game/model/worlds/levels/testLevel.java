@@ -1,5 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
+import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.*;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
@@ -32,19 +33,22 @@ public class testLevel extends Level {
 
 
     public void createSnapShot() {
-        SnapShot state = new SnapShot(mode);
+        SnapShot state = new SnapShot((ArrayList<GameObject>) movableObjects, (ArrayList<GameObject>) controllableObjects);
         states.push(state);
     }
 
-    public void undo(SnapShot m) {
+    /*public void undo(SnapShot m) {
         this.mode = m.getState();
         states.pop();
         this.mode = states.peek().getState();
-    }
+    }*/
 
     public void replay() {
-        for (SnapShot i : states) {
-            this.mode = i.getState();
+        Iterator<SnapShot> iterator = states.iterator();
+        while(iterator.hasNext()) {System.out.println("sssss");
+            SnapShot state = iterator.next();
+            this.controllableObjects = state.getState_controllableObjects();
+            this.movableObjects = state.getState_movableObjects();
             this.setStatus(mode.getStatus());
             mode.refresh();
         }
@@ -53,6 +57,7 @@ public class testLevel extends Level {
     @Override
     public boolean refresh() {
         this.setStatus(this.mode.getStatus());
+        createSnapShot();
         return mode.refresh();
     }
 

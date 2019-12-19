@@ -15,9 +15,14 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
 public class Main {
     public static void main(String[] args) {
 
+
+
         testLevel level = new testLevel(new ArcadeMode(new MediumDifficulty()));
 
         JMenuBar menuBar = new JMenuBar();
+
+        GameEngine.GameController gameController = GameEngine.start("Test Run", level, menuBar);
+
 
         JMenu menu1 = new JMenu("File");
 
@@ -108,7 +113,6 @@ public class Main {
         });
 
 
-        GameEngine.GameController gameController = GameEngine.start("Test Run", level, menuBar);
 
         newMenuItem.addActionListener(new ActionListener() {
 
@@ -174,6 +178,7 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
                 level.replay();
+                gameController.pause();
             }
         });
 
