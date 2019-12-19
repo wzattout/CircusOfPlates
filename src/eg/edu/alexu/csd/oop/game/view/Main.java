@@ -15,7 +15,7 @@ public class Main {
 
 
 
-        testLevel level = new testLevel(new ArcadeMode(new EasyDifficulty()));
+        testLevel level = new testLevel(new ArcadeMode(new MediumDifficulty()));
 
         JMenuBar menuBar = new JMenuBar();
 
