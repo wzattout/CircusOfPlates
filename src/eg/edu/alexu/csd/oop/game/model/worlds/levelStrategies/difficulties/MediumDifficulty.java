@@ -7,6 +7,7 @@ import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.ClownObject;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.LeftStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.RightStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +16,12 @@ import java.util.Random;
 public class MediumDifficulty implements Difficulty {
 
     private List<GameObject> movableObjects = new ArrayList<>();
+    private ClownObject clown = new ClownObject(625, 475);
 
     @Override
     public List<GameObject> getControllableObjects() {
         ArrayList<GameObject> controllableObjects = new ArrayList<>();
-        ClownObject clown = new ClownObject(625, 475);
         controllableObjects.add(clown);
-        GameObject leftStick = new LeftStick(585, 435, clown);
-        GameObject rightStick = new RightStick(740, 452, clown);
-        controllableObjects.add(leftStick);
-        controllableObjects.add(rightStick);
         return controllableObjects;
     }
 
@@ -41,6 +38,12 @@ public class MediumDifficulty implements Difficulty {
 
     @Override
     public List<GameObject> getMovableObjects() {
+        GameObject leftStick = new LeftStick(585, 435, clown);
+        GameObject rightStick = new RightStick(740, 452, clown);
+        movableObjects.add(leftStick);
+        movableObjects.add(rightStick);
+        clown.register_observer((Observer) leftStick);
+        clown.register_observer((Observer) rightStick);
         return movableObjects;
     }
 
@@ -66,7 +69,7 @@ public class MediumDifficulty implements Difficulty {
 
     @Override
     public double getShapeProbability() {
-        return 0.05;
+        return 0.01;
     }
 
     @Override
