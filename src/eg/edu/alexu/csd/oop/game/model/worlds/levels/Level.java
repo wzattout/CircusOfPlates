@@ -2,45 +2,51 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
-import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
-import eg.edu.alexu.csd.oop.game.model.utils.snapshot.Caretaker;
-import eg.edu.alexu.csd.oop.game.model.utils.snapshot.Originator;
-import eg.edu.alexu.csd.oop.game.model.utils.snapshot.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Level implements World {
 
-    private List<GameObject> constantObjects = new ArrayList<>();
-    private List<GameObject> movableObjects = new ArrayList<>();
-    private List<GameObject> controllableObjects = new ArrayList<>();
+    //private static Stack<SnapShot> states = new Stack<>();
+    protected List<GameObject> constantObjects;
+    protected List<GameObject> movableObjects;
+    protected List<GameObject> controllableObjects;
     private int width;
     private int height;
     private String status;
     private int speed;
     private int controlSpeed;
     private Mode mode;
-    private Originator originator = new Originator();
-    private Caretaker caretaker = new Caretaker();
 
     public Level(Mode mode) {
-        try {
-            Score.getInstance().resetScore();
-            this.width = 1400;
-            this.height = 700;
-            this.mode = mode;
-            this.speed = mode.getDifficulty().getSpeed();
-            this.controlSpeed = mode.getDifficulty().getControlSpeed();
-            this.setStatus(mode.getStatus());
-            this.constantObjects = mode.getDifficulty().getConstantObjects();
-            this.controllableObjects = mode.getDifficulty().getControllableObjects();
-            this.movableObjects = mode.getDifficulty().getMovableObjects();
-        } catch (NullPointerException ignored) {
-        }
+        this.width = 1400;
+        this.height = 700;
+        this.mode = mode;
+        this.speed = mode.getDifficulty().getSpeed();
+        this.controlSpeed = mode.getDifficulty().getControlSpeed();
+        this.setStatus(mode.getStatus());
+        this.constantObjects = mode.getDifficulty().getConstantObjects();
+        this.controllableObjects = mode.getDifficulty().getControllableObjects();
+        this.movableObjects = mode.getDifficulty().getMovableObjects();
     }
+
+   /*public void createSnapShot() {
+        SnapShot state = new SnapShot((ArrayList<GameObject>) movableObjects, (ArrayList<GameObject>) controllableObjects);
+        states.push(state);
+    }
+
+    public void replay() {
+        Iterator<SnapShot> iterator = states.iterator();
+        while (iterator.hasNext()) {
+            System.out.println("sssss");
+            SnapShot state = iterator.next();
+            this.controllableObjects = state.getState_controllableObjects();
+            this.movableObjects = state.getState_movableObjects();
+            this.setStatus(mode.getStatus());
+            mode.refresh();
+        }
+    }*/
 
     @Override
     public List<GameObject> getConstantObjects() {
@@ -70,9 +76,7 @@ public class Level implements World {
     @Override
     public boolean refresh() {
         this.setStatus(this.mode.getStatus());
-        List<GameObject> controllableObjects = new ArrayList<>(getControlableObjects());
-        List<GameObject> movableObjects = new ArrayList<>(getMovableObjects());
-        caretaker.addSnapshot(originator.createSnapshot(controllableObjects, movableObjects));
+        //createSnapShot();
         return mode.refresh();
     }
 
@@ -81,17 +85,8 @@ public class Level implements World {
         return status;
     }
 
-    private void setStatus(String status) {
+    protected void setStatus(String status) {
         this.status = status;
-    }
-
-    public void replay() {
-        Iterator<SnapShot> iterator = caretaker.getHistory().iterator();
-        while (iterator.hasNext()) {
-            SnapShot snapShot = iterator.next();
-            this.controllableObjects = snapShot.getControllableObjects();
-            this.movableObjects = snapShot.getMovableObjects();
-        }
     }
 
     @Override
@@ -103,5 +98,4 @@ public class Level implements World {
     public int getControlSpeed() {
         return controlSpeed;
     }
-
 }
