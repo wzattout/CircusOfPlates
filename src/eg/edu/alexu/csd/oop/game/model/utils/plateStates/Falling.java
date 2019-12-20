@@ -5,6 +5,7 @@ import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.LeftStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.RightStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Plate;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.Subject;
 
 import java.util.Iterator;
 import java.util.List;
@@ -22,8 +23,10 @@ public class Falling implements PlateState {
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();
             if (temp instanceof RightStick || temp instanceof LeftStick) {
-                if (shape.intersects(temp)) {
+                if (shape.intersects(temp)){
+                    ((Subject) temp).register_observer(shape);
                     shape.setState(new Stacked(shape));
+                    temp.setY(temp.getHeight()+shape.getHeight());
                 }
             }
         }

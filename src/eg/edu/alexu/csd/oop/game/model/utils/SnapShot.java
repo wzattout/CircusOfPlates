@@ -1,16 +1,29 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
+import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.ClownObject;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
+
+import java.util.ArrayList;
+
+
 
 public class SnapShot {
 
-    private static Mode mode = null;
+    private static ArrayList<GameObject> movableObjects = null;
+    private static ArrayList<GameObject> controllableObjects = null;
 
-    public SnapShot(Mode mode) {
-        this.mode = mode;
+    public SnapShot(ArrayList<GameObject> movableObjects, ArrayList<GameObject> controllableObjects) {
+        this.movableObjects = movableObjects;
+        this.controllableObjects = controllableObjects;
     }
 
-    public Mode getState() {
-        return this.mode;
+    public ArrayList<GameObject> getState_movableObjects() {
+        return movableObjects ;
     }
+
+    public ArrayList<GameObject> getState_controllableObjects() {
+        return controllableObjects;
+    }
+
 }

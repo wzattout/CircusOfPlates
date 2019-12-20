@@ -26,6 +26,13 @@ public class EasyDifficulty implements Difficulty {
 
     @Override
     public List<GameObject> getConstantObjects() {
+        GameObject leftStick = new LeftStick(585, 435, clown);
+        GameObject rightStick = new RightStick(740, 452, clown);
+        movableObjects.add(leftStick);
+        movableObjects.add(rightStick);
+        clown.register_observer((Observer) leftStick);
+        clown.register_observer((Observer) rightStick);
+
         List<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
         constantObjects.add(new ConveyorBelt(-30, 50));
@@ -35,16 +42,10 @@ public class EasyDifficulty implements Difficulty {
 
     @Override
     public List<GameObject> getMovableObjects() {
-        GameObject leftStick = new LeftStick(585, 435, clown);
-        GameObject rightStick = new RightStick(740, 452, clown);
-        movableObjects.add(leftStick);
-        movableObjects.add(rightStick);
-        clown.register_observer((Observer) leftStick);
-        clown.register_observer((Observer) rightStick);
-        return movableObjects;
+                return movableObjects;
     }
 
-    @Override
+   @Override
     public void setMovableObjects(ShapeObject shape) {
         movableObjects.add(shape);
     }

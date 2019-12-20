@@ -9,4 +9,5 @@ public interface Subject {
 
     //notify observers when subject changes
     void notify_observers();
+
 }

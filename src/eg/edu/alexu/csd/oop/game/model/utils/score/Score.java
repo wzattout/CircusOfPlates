@@ -26,6 +26,11 @@ public class Score implements Observer {
         current_score++;
     }
 
+    @Override
+    public void update(int x) {
+
+    }
+
     public int getScore() {
         return current_score;
     }

@@ -2,10 +2,12 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
 import eg.edu.alexu.csd.oop.game.model.utils.plateStates.Conveyed;
 import eg.edu.alexu.csd.oop.game.model.utils.plateStates.PlateState;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
 
-public abstract class ShapeObject extends GameObjectImpl {
+public abstract class ShapeObject extends GameObjectImpl implements Observer {
 
     protected boolean isRight;
     protected PlateState state = new Conveyed(this);
@@ -16,6 +18,21 @@ public abstract class ShapeObject extends GameObjectImpl {
         this.visible = true;
         this.height = getSpriteImages()[0].getHeight();
         this.width = getSpriteImages()[0].getWidth();
+    }
+
+    @Override
+    public void setX(int x){
+        super.setX(x);
+    }
+
+    @Override
+    public void update(){
+
+    }
+
+    @Override
+    public void update(int x){
+        setX(x);
     }
 
     public String getColor() {
@@ -41,4 +58,5 @@ public abstract class ShapeObject extends GameObjectImpl {
     public void vanish() {
         this.visible = false;
     }
+
 }
