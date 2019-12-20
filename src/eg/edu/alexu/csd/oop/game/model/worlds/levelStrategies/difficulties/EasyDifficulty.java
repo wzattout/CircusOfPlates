@@ -35,17 +35,17 @@ public class EasyDifficulty implements Difficulty {
 
         List<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
-        constantObjects.add(new ConveyorBelt(-30, 50));
-        constantObjects.add(new ConveyorBelt(960, 50));
+        constantObjects.add(new ConveyorBelt(-30, 60));
+        constantObjects.add(new ConveyorBelt(960, 60));
         return constantObjects;
     }
 
     @Override
     public List<GameObject> getMovableObjects() {
-                return movableObjects;
+        return movableObjects;
     }
 
-   @Override
+    @Override
     public void setMovableObjects(ShapeObject shape) {
         movableObjects.add(shape);
     }
@@ -72,7 +72,7 @@ public class EasyDifficulty implements Difficulty {
 
     @Override
     public int getGameTime() {
-        return 0;
+        return 3 * 60000;
     }
 
     @Override

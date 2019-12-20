@@ -19,22 +19,26 @@ public class Falling implements PlateState {
     }
 
     private void checkState(List<GameObject> gameObjects) {
-        Iterator<GameObject> iterator = gameObjects.iterator();
-        while (iterator.hasNext()) {
-            GameObject temp = iterator.next();
-            if (temp instanceof LeftStick) {
-                if (shape.intersects(temp)) {
-                    ((Subject) temp).register_observer(shape);
-                    shape.setState(new Stacked(shape));
-                    ((LeftStick) temp).setStack(shape);
-                    shape.setY(temp.getY() - ((LeftStick) temp).getStack().getStackHeight());
-                }
-            } else if (temp instanceof RightStick) {
-                if (shape.intersects(temp)) {
-                    ((Subject) temp).register_observer(shape);
-                    shape.setState(new Stacked(shape));
-                    ((RightStick) temp).setStack(shape);
-                    shape.setY(temp.getY() - ((RightStick) temp).getStack().getStackHeight());
+        if (shape.getY() >= 700)
+            shape.setState(new Useless());
+        else {
+            Iterator<GameObject> iterator = gameObjects.iterator();
+            while (iterator.hasNext()) {
+                GameObject temp = iterator.next();
+                if (temp instanceof LeftStick) {
+                    if (shape.intersects(temp)) {
+                        ((Subject) temp).register_observer(shape);
+                        shape.setState(new Stacked(shape));
+                        ((LeftStick) temp).setStack(shape);
+                        shape.setY(temp.getY() - ((LeftStick) temp).getStack().getStackHeight());
+                    }
+                } else if (temp instanceof RightStick) {
+                    if (shape.intersects(temp)) {
+                        ((Subject) temp).register_observer(shape);
+                        shape.setState(new Stacked(shape));
+                        ((RightStick) temp).setStack(shape);
+                        shape.setY(temp.getY() - ((RightStick) temp).getStack().getStackHeight());
+                    }
                 }
             }
         }

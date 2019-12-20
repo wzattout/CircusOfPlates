@@ -54,9 +54,9 @@ public abstract class ShapeObject extends GameObjectImpl implements Observer {
 
     public boolean intersects(GameObject shape) {
         int absoluteHeight;
-        if(shape instanceof LeftStick)
+        if (shape instanceof LeftStick)
             absoluteHeight = shape.getY() - ((LeftStick) shape).getStack().getStackHeight();
-        else if(shape instanceof RightStick)
+        else if (shape instanceof RightStick)
             absoluteHeight = shape.getY() - ((RightStick) shape).getStack().getStackHeight();
         else
             absoluteHeight = shape.getY();

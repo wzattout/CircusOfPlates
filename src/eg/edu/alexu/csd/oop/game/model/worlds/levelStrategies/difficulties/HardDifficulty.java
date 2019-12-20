@@ -1,6 +1,8 @@
 package eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.Background;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.ClownObject;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.LeftStick;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.RightStick;
@@ -13,7 +15,7 @@ import java.util.Random;
 
 public class HardDifficulty implements Difficulty {
 
-    private List<GameObject> movableObjects;
+    private List<GameObject> movableObjects = new ArrayList<>();
     private ClownObject clown = new ClownObject(625, 475);
 
     @Override
@@ -32,7 +34,13 @@ public class HardDifficulty implements Difficulty {
         clown.register_observer((Observer) leftStick);
         clown.register_observer((Observer) rightStick);
 
-        return null;
+        ArrayList<GameObject> constantObjects = new ArrayList<>();
+        constantObjects.add(new Background(0, 0));
+        constantObjects.add(new ConveyorBelt(-30, 60));
+        constantObjects.add(new ConveyorBelt(960, 60));
+        constantObjects.add(new ConveyorBelt(-100, 200));
+        constantObjects.add(new ConveyorBelt(960 + 70, 200));
+        return constantObjects;
     }
 
     @Override
@@ -62,22 +70,22 @@ public class HardDifficulty implements Difficulty {
 
     @Override
     public double getShapeProbability() {
-        return 0;
+        return 0.02;
     }
 
     @Override
     public int getGameTime() {
-        return 0;
+        return 60000;
     }
 
     @Override
     public int getShapeCount() {
-        return 0;
+        return 3;
     }
 
     @Override
     public String[] getColors() {
-        return new String[0];
+        return new String[]{"red", "yellow", "green", "cyan", "orange"};
     }
 
     @Override

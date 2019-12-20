@@ -38,6 +38,7 @@ public class ArcadeMode implements Mode {
 
     @Override
     public boolean refresh() {
+        boolean leftStick = true, rightStick = true;
         timeElapsed = System.currentTimeMillis() - startTime;
         if (Math.random() < difficulty.getShapeProbability())
             difficulty.setMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), difficulty.getConveyorPosition(), new Random().nextBoolean()));
@@ -50,14 +51,14 @@ public class ArcadeMode implements Mode {
                 if (shape.getState().actUponState(intersectedObjects, difficulty.getSpeed()))
                     iterator.remove();
             } else if (temp instanceof LeftStick) {
-                if (temp.getY() - ((LeftStick) temp).getStack().getStackHeight() <= 0)
-                    return false;
+                if (temp.getY() - ((LeftStick) temp).getStack().getStackHeight() <= 50)
+                    leftStick = false;
             } else if (temp instanceof RightStick) {
-                if (temp.getY() - ((RightStick) temp).getStack().getStackHeight() <= 0)
-                    return false;
+                if (temp.getY() - ((RightStick) temp).getStack().getStackHeight() <= 50)
+                    rightStick = false;
             }
         }
-        return remainingLives > 0;
+        return remainingLives > 0 && (leftStick || rightStick);
     }
 
     @Override
