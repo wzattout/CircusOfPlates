@@ -165,7 +165,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                level.replay();
+                //level.replay();
                 gameController.pause();
             }
         });
