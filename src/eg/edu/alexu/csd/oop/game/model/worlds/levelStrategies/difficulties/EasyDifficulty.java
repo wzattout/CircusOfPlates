@@ -47,7 +47,6 @@ public class EasyDifficulty implements Difficulty {
 
    @Override
     public void setMovableObjects(ShapeObject shape) {
-
         movableObjects.add(shape);
     }
 

@@ -9,11 +9,11 @@ import java.util.List;
 
 public class ClownObject extends GameObjectImpl implements Subject {
 
-    List<Observer> Observers = new ArrayList<>();
+    private List<Observer> Observers = new ArrayList<>();
 
     public ClownObject(int x, int y) {
         super(x, y, new String[]{"/clown.png"});
-        this.x = x;
+        super.setX(x);
         this.visible = true;
         this.width = getSpriteImages()[0].getHeight();
         this.height = getSpriteImages()[0].getWidth();
@@ -37,6 +37,8 @@ public class ClownObject extends GameObjectImpl implements Subject {
     @Override
     public void notify_observers() {
         for (Observer observer : Observers)
-            observer.update();
+            observer.update(this.getX());
     }
+
+
 }
