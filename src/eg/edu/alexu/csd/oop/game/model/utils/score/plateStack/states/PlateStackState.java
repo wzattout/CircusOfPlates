@@ -1,10 +1,15 @@
 package eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.states;
 
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.PlateStack;
 
 public interface PlateStackState {
 
-    boolean incrementScore();
+    int getChangeInHeight();
 
-    boolean changeState(String color, PlateStack stack);
+    void setChangeInHeight(int changeInHeight);
+
+    ShapeObject getShape();
+
+    boolean changeState(ShapeObject shape, PlateStack stack);
 }

@@ -2,7 +2,8 @@ package eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.GameObjectImpl;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.constant.ConveyorBelt;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.LeftStick;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.controllable.RightStick;
 import eg.edu.alexu.csd.oop.game.model.utils.plateStates.Conveyed;
 import eg.edu.alexu.csd.oop.game.model.utils.plateStates.PlateState;
 import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
@@ -21,17 +22,17 @@ public abstract class ShapeObject extends GameObjectImpl implements Observer {
     }
 
     @Override
-    public void setX(int x){
+    public void setX(int x) {
         super.setX(x);
     }
 
     @Override
-    public void update(){
+    public void update() {
 
     }
 
     @Override
-    public void update(int x){
+    public void update(int x) {
         setX(x);
     }
 
@@ -52,11 +53,17 @@ public abstract class ShapeObject extends GameObjectImpl implements Observer {
     }
 
     public boolean intersects(GameObject shape) {
-        return ((Math.abs(this.getY() + this.getHeight() - shape.getY()) <= 4) && (Math.abs(this.getX() + this.getWidth() / 2 - (shape.getX() + shape.getWidth() / 2)) <= this.getWidth() / 2 + shape.getWidth() / 2));
+        int absoluteHeight;
+        if(shape instanceof LeftStick)
+            absoluteHeight = shape.getY() - ((LeftStick) shape).getStack().getStackHeight();
+        else if(shape instanceof RightStick)
+            absoluteHeight = shape.getY() - ((RightStick) shape).getStack().getStackHeight();
+        else
+            absoluteHeight = shape.getY();
+        return ((Math.abs(this.getY() + this.getHeight() - absoluteHeight) <= 4) && (Math.abs(this.getX() + this.getWidth() / 2 - (shape.getX() + shape.getWidth() / 2)) <= this.getWidth() / 2 + shape.getWidth() / 2));
     }
 
     public void vanish() {
         this.visible = false;
     }
-
 }

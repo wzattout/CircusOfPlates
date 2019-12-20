@@ -1,37 +1,34 @@
 package eg.edu.alexu.csd.oop.game.model.utils.score;
 
-import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.PlateStack;
-
 public class Score implements Observer {
 
-    private int current_score = 0;
-    private PlateStack scoreNotifier = new PlateStack();
     private static Score score = null;
+    private int current_score = 0;
 
     private Score() {
-        scoreNotifier.register_observer(this);
     }
 
     public static Score getInstance() {
         if (score != null)
             return score;
-        return new Score();
+        score = new Score();
+        return score;
     }
 
-    public PlateStack getScoreNotifier() {
-        return scoreNotifier;
-    }
-
+    @Override
     public void update() {
-        current_score++;
+        incrementScore();
     }
 
     @Override
     public void update(int x) {
-
     }
 
     public int getScore() {
         return current_score;
+    }
+
+    private void incrementScore() {
+        score.current_score++;
     }
 }

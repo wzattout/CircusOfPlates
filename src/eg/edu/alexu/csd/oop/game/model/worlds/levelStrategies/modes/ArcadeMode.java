@@ -26,19 +26,19 @@ public class ArcadeMode implements Mode {
     public ArcadeMode(Difficulty difficulty) {
         this.difficulty = difficulty;
         factory = new ShapeFactory(difficulty.getColors());
-        for(GameObject gameObject : difficulty.getConstantObjects()){
-            if(gameObject instanceof ConveyorBelt)
+        for (GameObject gameObject : difficulty.getConstantObjects()) {
+            if (gameObject instanceof ConveyorBelt)
                 intersectedObjects.add(gameObject);
         }
-        for(GameObject gameObject : difficulty.getMovableObjects()){
-            if(gameObject instanceof LeftStick || gameObject instanceof RightStick)
+        for (GameObject gameObject : difficulty.getMovableObjects()) {
+            if (gameObject instanceof LeftStick || gameObject instanceof RightStick)
                 intersectedObjects.add(gameObject);
         }
     }
 
     @Override
     public boolean refresh() {
-        timeElapsed = startTime - System.currentTimeMillis();
+        timeElapsed = System.currentTimeMillis() - startTime;
         if (Math.random() < difficulty.getShapeProbability())
             difficulty.setMovableObjects(factory.createShape((int) (Math.random() * difficulty.getShapeCount()), difficulty.getConveyorPosition(), new Random().nextBoolean()));
         Iterator<GameObject> iterator = difficulty.getMovableObjects().iterator();
@@ -47,8 +47,14 @@ public class ArcadeMode implements Mode {
             ShapeObject shape;
             if (temp instanceof ShapeObject) {
                 shape = (ShapeObject) temp;
-                if(shape.getState().actUponState(intersectedObjects, difficulty.getSpeed()))
+                if (shape.getState().actUponState(intersectedObjects, difficulty.getSpeed()))
                     iterator.remove();
+            } else if (temp instanceof LeftStick) {
+                if (temp.getY() - ((LeftStick) temp).getStack().getStackHeight() <= 0)
+                    return false;
+            } else if (temp instanceof RightStick) {
+                if (temp.getY() - ((RightStick) temp).getStack().getStackHeight() <= 0)
+                    return false;
             }
         }
         return remainingLives > 0;

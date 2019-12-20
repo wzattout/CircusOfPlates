@@ -13,11 +13,6 @@ public class Stacked implements PlateState {
         this.shape = shape;
     }
 
-    /*private PlateState checkState() {
-
-        return null;
-    }*/
-
     @Override
     public boolean actUponState(List<GameObject> gameObjects, int speed) {
         return false;

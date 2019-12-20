@@ -25,8 +25,8 @@ public class HardDifficulty implements Difficulty {
 
     @Override
     public List<GameObject> getConstantObjects() {
-        GameObject leftStick = new LeftStick(585, 435, clown);
-        GameObject rightStick = new RightStick(740, 452, clown);
+        GameObject leftStick = new LeftStick(585, 435);
+        GameObject rightStick = new RightStick(740, 452);
         movableObjects.add(leftStick);
         movableObjects.add(rightStick);
         clown.register_observer((Observer) leftStick);

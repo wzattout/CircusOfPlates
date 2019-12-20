@@ -22,11 +22,19 @@ public class Falling implements PlateState {
         Iterator<GameObject> iterator = gameObjects.iterator();
         while (iterator.hasNext()) {
             GameObject temp = iterator.next();
-            if (temp instanceof RightStick || temp instanceof LeftStick) {
-                if (shape.intersects(temp)){
+            if (temp instanceof LeftStick) {
+                if (shape.intersects(temp)) {
                     ((Subject) temp).register_observer(shape);
                     shape.setState(new Stacked(shape));
-                    temp.setY(temp.getHeight()+shape.getHeight());
+                    ((LeftStick) temp).setStack(shape);
+                    shape.setY(temp.getY() - ((LeftStick) temp).getStack().getStackHeight());
+                }
+            } else if (temp instanceof RightStick) {
+                if (shape.intersects(temp)) {
+                    ((Subject) temp).register_observer(shape);
+                    shape.setState(new Stacked(shape));
+                    ((RightStick) temp).setStack(shape);
+                    shape.setY(temp.getY() - ((RightStick) temp).getStack().getStackHeight());
                 }
             }
         }

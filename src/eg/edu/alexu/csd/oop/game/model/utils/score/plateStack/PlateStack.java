@@ -1,7 +1,10 @@
 package eg.edu.alexu.csd.oop.game.model.utils.score.plateStack;
 
-import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.states.*;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
 import eg.edu.alexu.csd.oop.game.model.utils.score.Observer;
+import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.states.PlateStackState;
+import eg.edu.alexu.csd.oop.game.model.utils.score.plateStack.states.Waiting;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -9,6 +12,13 @@ import java.util.Stack;
 public class PlateStack implements Subject {
 
     private ArrayList<Observer> observers = new ArrayList<>();
+    private Stack<PlateStackState> stateStack = new Stack<>();
+    private int stackHeight;
+
+    public PlateStack() {
+        stateStack.push(new Waiting(null));
+        register_observer(Score.getInstance());
+    }
 
     public Stack<PlateStackState> getStateStack() {
         return stateStack;
@@ -16,12 +26,6 @@ public class PlateStack implements Subject {
 
     public void setStateStack(Stack<PlateStackState> stateStack) {
         this.stateStack = stateStack;
-    }
-
-    private Stack<PlateStackState> stateStack = new Stack<>();
-
-    public PlateStack() {
-        stateStack.push(new Waiting(null));
     }
 
     @Override
@@ -36,8 +40,17 @@ public class PlateStack implements Subject {
         }
     }
 
-    public void checkStack(String color) {
-        if (stateStack.peek().changeState(color, this))
+    public void checkStack(ShapeObject shape) {
+        if (stateStack.peek().changeState(shape, this))
             notify_observers();
+        setStackHeight(stateStack.peek().getChangeInHeight());
+    }
+
+    public int getStackHeight() {
+        return stackHeight;
+    }
+
+    public void setStackHeight(int stackHeight) {
+        this.stackHeight += stackHeight;
     }
 }

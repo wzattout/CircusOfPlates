@@ -1,6 +1,6 @@
 package eg.edu.alexu.csd.oop.game.model.utils.score;
 
-public interface  Observer {
+public interface Observer {
 
     void update();
 

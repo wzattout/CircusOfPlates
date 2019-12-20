@@ -39,6 +39,4 @@ public class ClownObject extends GameObjectImpl implements Subject {
         for (Observer observer : Observers)
             observer.update(this.getX());
     }
-
-
 }
