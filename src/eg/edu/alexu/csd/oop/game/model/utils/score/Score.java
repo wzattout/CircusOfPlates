@@ -28,6 +28,10 @@ public class Score implements Observer {
         return current_score;
     }
 
+    public void resetScore() {
+        score.current_score = 0;
+    }
+
     private void incrementScore() {
         score.current_score++;
     }

@@ -9,8 +9,6 @@ import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.TimedMode;
 import eg.edu.alexu.csd.oop.game.model.worlds.levels.Level;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String[] args) {
@@ -47,98 +45,58 @@ public class Main {
         newMenuItem.add(ArcadeModeItem);
         newMenuItem.add(TimeModeItem);
 
-        easyArcadeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new ArcadeMode(new EasyDifficulty())));
-            }
+        easyArcadeModeItem.addActionListener(arg0 -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new ArcadeMode(new EasyDifficulty())));
         });
 
-        normalArcadeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new ArcadeMode(new MediumDifficulty())));
-            }
+        normalArcadeModeItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new ArcadeMode(new MediumDifficulty())));
         });
 
-        hardArcadeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new ArcadeMode(new HardDifficulty())));
-            }
+        hardArcadeModeItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new ArcadeMode(new HardDifficulty())));
         });
 
-        easyTimeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new TimedMode(new EasyDifficulty())));
-            }
+        easyTimeModeItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new TimedMode(new EasyDifficulty())));
         });
 
-        normalTimeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new TimedMode(new MediumDifficulty())));
-            }
+        normalTimeModeItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new TimedMode(new MediumDifficulty())));
         });
 
-        hardTimeModeItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                gameController.changeWorld(new Level(new TimedMode(new HardDifficulty())));
-            }
+        hardTimeModeItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            gameController.changeWorld(new Level(new TimedMode(new HardDifficulty())));
         });
 
-        newMenuItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                //gameController.changeWorld();
-            }
+        newMenuItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            //gameController.changeWorld();
         });
 
         JMenuItem saveMenuItem = new JMenu("Save");
-        saveMenuItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                // TODO Auto-generated method stub
+        saveMenuItem.addActionListener(arg0 -> {
+            // TODO Auto-generated method stub
 
 
-            }
         });
 
         JMenuItem loadMenuItem = new JMenu("Load");
-        loadMenuItem.addActionListener(new ActionListener() {
+        loadMenuItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-
-            }
         });
 
         JMenuItem exitMenuItem = new JMenuItem("Exit");
-        exitMenuItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                System.exit(0);
-            }
+        exitMenuItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            System.exit(0);
         });
 
 
@@ -150,13 +108,9 @@ public class Main {
         menu1.add(exitMenuItem);
 
         JMenuItem undoMenuItem = new JMenuItem("Undo");
-        undoMenuItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                //level.undo();
-            }
+        undoMenuItem.addActionListener(e -> {
+            // TODO Auto-generated method stub
+            //level.undo();
         });
 
         JMenuItem replayMenuItem = new JMenuItem("Replay");
@@ -165,7 +119,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-                level.replay();
+                //level.replay();
                 gameController.pause();
             }
         });
@@ -173,30 +127,24 @@ public class Main {
         JMenuItem resumeItem = new JMenuItem("Resume");
         JMenuItem pauseItem = new JMenuItem("Pause");
 
-        resumeItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                menu2.remove(resumeItem);
-                menu2.remove(undoMenuItem);
-                menu2.remove(replayMenuItem);
-                menu2.add(pauseItem);
-                menu2.add(undoMenuItem);
-                menu2.add(replayMenuItem);
-                gameController.resume();
-            }
+        resumeItem.addActionListener(e -> {
+            menu2.remove(resumeItem);
+            menu2.remove(undoMenuItem);
+            menu2.remove(replayMenuItem);
+            menu2.add(pauseItem);
+            menu2.add(undoMenuItem);
+            menu2.add(replayMenuItem);
+            gameController.resume();
         });
 
-        pauseItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                menu2.remove(pauseItem);
-                menu2.remove(undoMenuItem);
-                menu2.remove(replayMenuItem);
-                menu2.add(resumeItem);
-                menu2.add(undoMenuItem);
-                menu2.add(replayMenuItem);
-                gameController.pause();
-            }
+        pauseItem.addActionListener(e -> {
+            menu2.remove(pauseItem);
+            menu2.remove(undoMenuItem);
+            menu2.remove(replayMenuItem);
+            menu2.add(resumeItem);
+            menu2.add(undoMenuItem);
+            menu2.add(replayMenuItem);
+            gameController.pause();
         });
 
         menu2.add(pauseItem);
