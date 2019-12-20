@@ -36,8 +36,8 @@ public class MediumDifficulty implements Difficulty {
 
         ArrayList<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
-        constantObjects.add(new ConveyorBelt(-30, 50));
-        constantObjects.add(new ConveyorBelt(960, 50));
+        constantObjects.add(new ConveyorBelt(-30, 60));
+        constantObjects.add(new ConveyorBelt(960, 60));
         constantObjects.add(new ConveyorBelt(-100, 200));
         constantObjects.add(new ConveyorBelt(960 + 70, 200));
         return constantObjects;
@@ -75,7 +75,7 @@ public class MediumDifficulty implements Difficulty {
 
     @Override
     public int getGameTime() {
-        return 0;
+        return 2 * 60000;
     }
 
     @Override

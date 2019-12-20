@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 abstract public class GameObjectImpl implements GameObject {
 
-    private int x;
     protected int width;
     protected int height;
     protected boolean visible;
+    private int x;
     private int y;
     private BufferedImage[] spriteImages;
 

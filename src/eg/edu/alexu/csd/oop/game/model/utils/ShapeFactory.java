@@ -1,9 +1,9 @@
 package eg.edu.alexu.csd.oop.game.model.utils;
 
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Bowl;
-import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Cake;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Plate;
 import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.Vase;
 
 public class ShapeFactory {
 
@@ -21,7 +21,7 @@ public class ShapeFactory {
             case 1:
                 return new Bowl(right, top, colors[(int) color]);
             case 2:
-                return new Cake(right, top, colors[(int) color]);
+                return new Vase(right, top, colors[(int) color]);
         }
         return null;
     }

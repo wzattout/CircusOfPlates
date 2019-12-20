@@ -10,24 +10,18 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class introGUI extends JComponent{
+public class IntroGUI extends JComponent {
 
     JFrame window = new JFrame("Circus of Plates");
 
     String path;
     BufferedImage image;
 
-    JButton newGame =new JButton("New Game");
-    JButton load =new JButton("Load");
-    JButton exit =new JButton("Exit");
+    JButton newGame = new JButton("New Game");
+    JButton load = new JButton("Load");
+    JButton exit = new JButton("Exit");
 
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawImage(image, 0, 0, null);
-    }
-
-    public introGUI(String path) throws IOException {
-
+    public IntroGUI(String path) throws IOException {
 
         image = ImageIO.read(getClass().getResourceAsStream(path));
 
@@ -53,27 +47,20 @@ public class introGUI extends JComponent{
                 load.setFont(new Font("Tahoma", Font.BOLD, 30));
                 exit.setFont(new Font("Tahoma", Font.BOLD, 30));
 
-                window.add(newGame); window.add(load); window.add(exit);
-
-                newGame.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    }
-                });
-
-                load.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    }
-                });
-
-                exit.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    }
-                });
+                window.add(newGame);
+                window.add(load);
+                window.add(exit);
 
                 newGame.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        // write here
+                        window.dispose();
+                        try {
+                            new ModeGUI("/circus_background.png");
+                        } catch (IOException ex) {
+                            ex.printStackTrace();
+                        }
+                        removeMouseListener(this);
                     }
                 });
 
@@ -87,7 +74,7 @@ public class introGUI extends JComponent{
                 exit.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        // write here
+                        System.exit(0);
                     }
                 });
 
@@ -97,6 +84,11 @@ public class introGUI extends JComponent{
     }
 
     public static void main(String[] args) throws IOException {
-        introGUI newGame = new introGUI("/circus_background.png");
+        IntroGUI newGame = new IntroGUI("/circus_background.png");
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, null);
     }
 }

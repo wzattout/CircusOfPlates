@@ -2,11 +2,13 @@ package eg.edu.alexu.csd.oop.game.model.worlds.levels;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
 import java.util.List;
 
-public abstract class Level implements World {
+public class Level implements World {
 
+    //private static Stack<SnapShot> states = new Stack<>();
     protected List<GameObject> constantObjects;
     protected List<GameObject> movableObjects;
     protected List<GameObject> controllableObjects;
@@ -15,13 +17,36 @@ public abstract class Level implements World {
     private String status;
     private int speed;
     private int controlSpeed;
+    private Mode mode;
 
-    public Level(int width, int height, int speed, int controlSpeed) {
-        this.width = width;
-        this.height = height;
-        this.speed = speed;
-        this.controlSpeed = controlSpeed;
+    public Level(Mode mode) {
+        this.width = 1400;
+        this.height = 700;
+        this.mode = mode;
+        this.speed = mode.getDifficulty().getSpeed();
+        this.controlSpeed = mode.getDifficulty().getControlSpeed();
+        this.setStatus(mode.getStatus());
+        this.constantObjects = mode.getDifficulty().getConstantObjects();
+        this.controllableObjects = mode.getDifficulty().getControllableObjects();
+        this.movableObjects = mode.getDifficulty().getMovableObjects();
     }
+
+   /*public void createSnapShot() {
+        SnapShot state = new SnapShot((ArrayList<GameObject>) movableObjects, (ArrayList<GameObject>) controllableObjects);
+        states.push(state);
+    }
+
+    public void replay() {
+        Iterator<SnapShot> iterator = states.iterator();
+        while (iterator.hasNext()) {
+            System.out.println("sssss");
+            SnapShot state = iterator.next();
+            this.controllableObjects = state.getState_controllableObjects();
+            this.movableObjects = state.getState_movableObjects();
+            this.setStatus(mode.getStatus());
+            mode.refresh();
+        }
+    }*/
 
     @Override
     public List<GameObject> getConstantObjects() {
@@ -49,7 +74,11 @@ public abstract class Level implements World {
     }
 
     @Override
-    public abstract boolean refresh();
+    public boolean refresh() {
+        this.setStatus(this.mode.getStatus());
+        //createSnapShot();
+        return mode.refresh();
+    }
 
     @Override
     public String getStatus() {

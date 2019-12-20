@@ -2,9 +2,11 @@ package eg.edu.alexu.csd.oop.game.view;
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.EasyDifficulty;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.HardDifficulty;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.MediumDifficulty;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.ArcadeMode;
-import eg.edu.alexu.csd.oop.game.model.worlds.levels.testLevel;
+import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.TimedMode;
+import eg.edu.alexu.csd.oop.game.model.worlds.levels.Level;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -14,8 +16,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-
-        testLevel level = new testLevel(new ArcadeMode(new MediumDifficulty()));
+        Level level = new Level(new ArcadeMode(new EasyDifficulty()));
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -51,7 +52,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 // TODO Auto-generated method stub
-                //gameController.changeWorld(new LeveArcadeMode(), new EasyDifficulty());
+                gameController.changeWorld(new Level(new ArcadeMode(new EasyDifficulty())));
             }
         });
 
@@ -60,7 +61,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                gameController.changeWorld(new Level(new ArcadeMode(new MediumDifficulty())));
             }
         });
 
@@ -69,7 +70,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                gameController.changeWorld(new Level(new ArcadeMode(new HardDifficulty())));
             }
         });
 
@@ -78,7 +79,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                gameController.changeWorld(new Level(new TimedMode(new EasyDifficulty())));
             }
         });
 
@@ -87,7 +88,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                gameController.changeWorld(new Level(new TimedMode(new MediumDifficulty())));
             }
         });
 
@@ -96,21 +97,9 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
-
+                gameController.changeWorld(new Level(new TimedMode(new HardDifficulty())));
             }
         });
-
-
-        newMenuItem.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                //gameController.changeWorld();
-            }
-        });
-
-
 
         newMenuItem.addActionListener(new ActionListener() {
 

@@ -45,7 +45,7 @@ public class OneToGo implements PlateStackState {
         }
         PlateStackState state = new Waiting(shape);
         state.setChangeInHeight(shape.getHeight());
-        temp.push(new Waiting(shape));
+        temp.push(state);
         stack.setStateStack(temp);
         return false;
     }
