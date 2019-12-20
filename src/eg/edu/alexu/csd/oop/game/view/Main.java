@@ -114,10 +114,14 @@ public class Main {
         });
 
         JMenuItem replayMenuItem = new JMenuItem("Replay");
-        replayMenuItem.addActionListener(e -> {
-            // TODO Auto-generated method stub
-            //gameController.changeWorld(new Level(new ReplayMode(level)));
-            level.replay();
+        replayMenuItem.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                //level.replay();
+                gameController.pause();
+            }
         });
 
         JMenuItem resumeItem = new JMenuItem("Resume");
