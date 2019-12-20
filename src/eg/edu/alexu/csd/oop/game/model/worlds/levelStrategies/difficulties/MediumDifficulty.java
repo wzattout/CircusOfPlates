@@ -15,31 +15,33 @@ import java.util.Random;
 
 public class MediumDifficulty implements Difficulty {
 
-    private List<GameObject> movableObjects = new ArrayList<>();
     private ClownObject clown = new ClownObject(625, 475);
+    private List<GameObject> movableObjects = new ArrayList<>();
+    private List<GameObject> controllableObjects = new ArrayList<>();
+    private List<GameObject> constantObjects = new ArrayList<>();
 
-    @Override
-    public List<GameObject> getControllableObjects() {
-        ArrayList<GameObject> controllableObjects = new ArrayList<>();
+    public MediumDifficulty() {
         controllableObjects.add(clown);
-        return controllableObjects;
-    }
-
-    @Override
-    public List<GameObject> getConstantObjects() {
         GameObject leftStick = new LeftStick(585, 435);
         GameObject rightStick = new RightStick(740, 452);
         movableObjects.add(leftStick);
         movableObjects.add(rightStick);
         clown.register_observer((Observer) leftStick);
         clown.register_observer((Observer) rightStick);
-
-        ArrayList<GameObject> constantObjects = new ArrayList<>();
         constantObjects.add(new Background(0, 0));
         constantObjects.add(new ConveyorBelt(-30, 60));
         constantObjects.add(new ConveyorBelt(960, 60));
         constantObjects.add(new ConveyorBelt(-100, 200));
         constantObjects.add(new ConveyorBelt(960 + 70, 200));
+    }
+
+    @Override
+    public List<GameObject> getControllableObjects() {
+        return controllableObjects;
+    }
+
+    @Override
+    public List<GameObject> getConstantObjects() {
         return constantObjects;
     }
 

@@ -2,18 +2,23 @@ package eg.edu.alexu.csd.oop.game.model.utils.snapshot;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class SnapShot {
 
-    private ArrayList<GameObject> capturedObjects;
+    private List<GameObject> movableObjects;
+    private List<GameObject> controllableObjects;
 
-    public SnapShot(ArrayList<GameObject> movableObjects, ArrayList<GameObject> controllableObjects) {
-        capturedObjects = movableObjects;
-        capturedObjects.addAll(controllableObjects);
+    public SnapShot(List<GameObject> movableObjects, List<GameObject> controllableObjects) {
+        this.movableObjects = movableObjects;
+        this.controllableObjects = controllableObjects;
     }
 
-    public ArrayList<GameObject> getCapturedObjects() {
-        return capturedObjects;
+    public List<GameObject> getMovableObjects() {
+        return movableObjects;
+    }
+
+    public List<GameObject> getControllableObjects() {
+        return controllableObjects;
     }
 }

@@ -8,5 +8,5 @@ public interface Mode {
 
     String getStatus();
 
-    Difficulty getDifficulty();
+    Difficulty getDifficulty() throws NullPointerException;
 }
