@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 abstract public class GameObjectImpl implements GameObject {
 
-    public int x;
+    private int x;
     protected int width;
     protected int height;
     protected boolean visible;
