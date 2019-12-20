@@ -35,7 +35,7 @@ public abstract class ShapeObject extends GameObjectImpl {
     }
 
     public boolean intersects(GameObject shape) {
-            return ((Math.abs(this.getY() + this.getHeight() - shape.getY()) <= 4) && (Math.abs(this.getX() + this.getWidth() / 2 - (shape.getX() + shape.getWidth() / 2)) <= this.getWidth() / 2 + shape.getWidth() / 2));
+        return ((Math.abs(this.getY() + this.getHeight() - shape.getY()) <= 4) && (Math.abs(this.getX() + this.getWidth() / 2 - (shape.getX() + shape.getWidth() / 2)) <= this.getWidth() / 2 + shape.getWidth() / 2));
     }
 
     public void vanish() {
