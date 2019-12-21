@@ -8,12 +8,11 @@ import eg.edu.alexu.csd.oop.game.model.utils.snapshot.Originator;
 import eg.edu.alexu.csd.oop.game.model.utils.snapshot.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Level implements World {
 
+    public boolean flag = true;
     private List<GameObject> constantObjects = new ArrayList<>();
     private List<GameObject> movableObjects = new ArrayList<>();
     private List<GameObject> controllableObjects = new ArrayList<>();
@@ -25,6 +24,7 @@ public class Level implements World {
     private Mode mode;
     private Originator originator = new Originator();
     private Caretaker caretaker = new Caretaker();
+    private Iterator<SnapShot> iterator = caretaker.getHistory().iterator();
 
     public Level(Mode mode) {
         try {
@@ -69,11 +69,19 @@ public class Level implements World {
 
     @Override
     public boolean refresh() {
-        this.setStatus(this.mode.getStatus());
-        List<GameObject> controllableObjects = new ArrayList<>(getControlableObjects());
-        List<GameObject> movableObjects = new ArrayList<>(getMovableObjects());
-        caretaker.addSnapshot(originator.createSnapshot(controllableObjects, movableObjects));
-        return mode.refresh();
+        if (flag) {
+            this.setStatus(this.mode.getStatus());
+            List<GameObject> controllableObjects = new ArrayList<>(getControlableObjects());
+            List<GameObject> movableObjects = new ArrayList<>(getMovableObjects());
+            caretaker.addSnapshot(originator.createSnapshot(controllableObjects, movableObjects));
+            return mode.refresh();
+        }
+        try {
+            replay();
+        } catch (ConcurrentModificationException ignored){
+
+        }
+        return iterator.hasNext();
     }
 
     @Override
@@ -86,13 +94,15 @@ public class Level implements World {
     }
 
     public void replay() {
-        Iterator<SnapShot> iterator = caretaker.getHistory().iterator();
-        while (iterator.hasNext()) {
+        try {
             SnapShot snapShot = iterator.next();
             this.controllableObjects = snapShot.getControllableObjects();
             this.movableObjects = snapShot.getMovableObjects();
+        } catch (NoSuchElementException ignored) {
+
         }
     }
+
 
     @Override
     public int getSpeed() {
