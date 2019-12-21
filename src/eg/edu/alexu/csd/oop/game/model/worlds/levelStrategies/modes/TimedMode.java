@@ -9,6 +9,7 @@ import eg.edu.alexu.csd.oop.game.model.utils.ShapeFactory;
 import eg.edu.alexu.csd.oop.game.model.utils.score.Score;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.difficulties.Difficulty;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -38,7 +39,7 @@ public class TimedMode implements Mode {
     }
 
     @Override
-    public boolean refresh() {
+    public boolean refresh() throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         boolean leftStick = true, rightStick = true;
         timeLeft = gameTime - (System.currentTimeMillis() - startTime);
         if (Math.random() < difficulty.getShapeProbability())
