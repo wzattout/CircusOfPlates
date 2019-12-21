@@ -8,6 +8,7 @@ import eg.edu.alexu.csd.oop.game.model.utils.snapshot.Originator;
 import eg.edu.alexu.csd.oop.game.model.utils.snapshot.SnapShot;
 import eg.edu.alexu.csd.oop.game.model.worlds.levelStrategies.modes.Mode;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class Level implements World {
@@ -74,7 +75,17 @@ public class Level implements World {
             List<GameObject> controllableObjects = new ArrayList<>(getControlableObjects());
             List<GameObject> movableObjects = new ArrayList<>(getMovableObjects());
             caretaker.addSnapshot(originator.createSnapshot(controllableObjects, movableObjects));
-            return mode.refresh();
+            try {
+                return mode.refresh();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         try {
             replay();

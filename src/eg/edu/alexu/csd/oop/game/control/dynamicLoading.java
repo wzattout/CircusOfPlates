@@ -1,5 +1,7 @@
 package eg.edu.alexu.csd.oop.game.control;
 
+import eg.edu.alexu.csd.oop.game.model.gameObjects.movable.shapes.ShapeObject;
+
 import javax.swing.*;
 import java.io.File;
 import java.net.MalformedURLException;
@@ -8,7 +10,7 @@ import java.net.URLClassLoader;
 
 public class dynamicLoading {
 
-    public Class dynamicLoad(String path, String name) {
+    public Class<? extends ShapeObject> dynamicLoad(String path, String name) {
         File file = new File(path);
 
         try {
@@ -17,13 +19,9 @@ public class dynamicLoading {
 
             ClassLoader cl = new URLClassLoader(urls);
 
-            Class cls = cl.loadClass(name);
+            return (Class<? extends ShapeObject>) cl.loadClass(name);
 
-            return cls;
-
-        } catch (MalformedURLException e) {
-            throw new NullPointerException();
-        } catch (ClassNotFoundException e) {
+        } catch (MalformedURLException | ClassNotFoundException e) {
             throw new NullPointerException();
         }
 
